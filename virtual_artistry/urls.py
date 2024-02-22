@@ -20,5 +20,6 @@ from artwork import views as index_views
 
 urlpatterns = [
     path('', index_views.index, name='index'),
+    path('artists/', include('artists.urls')),
     path('admin/', admin.site.urls),
 ]
