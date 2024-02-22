@@ -88,7 +88,7 @@ WSGI_APPLICATION = 'virtual_artistry.wsgi.application'
 # }
 
 DATABASES = {
-     'default': dj_database_url.parse(os.environ.get("postgres://qpswqrwz:dNzlyEFR5JJKhj2upJWA06cRpqdA6Y_e@abul.db.elephantsql.com/qpswqrwz"))
+     'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
 }
 
 # Password validation
