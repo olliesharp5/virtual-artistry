@@ -19,5 +19,21 @@ class Art(models.Model):
     condition = models.IntegerField(choices=CONDITION, default=0)
     created_on = models.DateTimeField(auto_now_add=True)
     status = models.IntegerField(choices=STATUS, default=0)
-    
-    
+
+
+class Review(models.Model):
+    art = models.ForeignKey(
+        Art, on_delete=models.CASCADE, related_name="reviews"
+    )
+    author = models.ForeignKey(
+        User, on_delete=models.CASCADE, related_name="reviewer"
+    )
+    body = models.TextField()
+    approved = models.BooleanField(default=False)
+    created_on = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ['created_on']
+
+    def __str__(self):
+        return f"Review {self.body} by {self.author}"
