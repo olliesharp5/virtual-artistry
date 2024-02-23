@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<!-- artists.html content starts here -->
+<div class="row">
+    <button class="btn btn-primary" href="#">Filters</button>
+</div>
+
+<div class="album py-5 bg-body-tertiary">
+    <div class="container">
+
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+        <div class="col">
+            {% for art in object_list %}
+          <div class="card shadow-sm">
+            <img src="/static/images/nobody.jpg" alt="">
+            <div class="card-body">
+              <p class="card-text">{{artist_profile.name}}</p>
+              <p class="card-text">{{artist_profile.location}}</p>
+            </div>
+          </div>
+        </div>
+            {% endfor %}
+    
+<!-- index.html content ends here -->
+
+{% endblock %}

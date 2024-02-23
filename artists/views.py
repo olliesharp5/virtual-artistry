@@ -1,6 +1,9 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.views import generic
+from .models import ArtistProfile
 
 # Create your views here.
-def artists(request):
-    return HttpResponse("The Artists Page")
+class ArtistList(generic.ListView):
+    queryset = ArtistProfile.objects.all()
+    template_name = "artists.html"
+    paginate_by = 6
