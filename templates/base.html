@@ -1,6 +1,7 @@
 {% load static %}
 
 {% url 'home' as home_url %}
+{% url 'artists' as artists_url %}
 
 <!DOCTYPE html>
 <html class="h-100" lang="en">
@@ -36,7 +37,7 @@
               <a class="nav-link" href="{% url 'home' %}">Artwork</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Artists</a>
+              <a class="nav-link" href="{% url 'artists' %}">Artists</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">Help</a>
