@@ -23,14 +23,15 @@
 
 </head>
 
-<body>
+<body class="d-flex flex-column h-100 main-bg"></body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href="#">Navbar w/ text</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
+                aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
         <div class="collapse navbar-collapse" id="navbarText">
-          <ul class="navbar-nav mr-auto">
+          <ul class="navbar-nav me-auto">
             <li class="nav-item active">
               <a class="nav-link" href="{% url 'home' %}">Artwork</a>
             </li>
@@ -44,7 +45,7 @@
                 <a class="nav-link" href="#">Logout</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Register</a>
+                <a class="btn btn-primary" href="#">Register</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#">Login</a>
@@ -54,7 +55,7 @@
             Navbar text with an inline element
           </span>
         </div>
-      </nav>
+    </nav>
 
     <main>
         {% block content %}
@@ -62,7 +63,17 @@
         {% endblock content %}
     </main>
 
-    <footer>
+    <footer class="footer mt-auto py-3 bg-light">
+        <div class="container">
+            <div class="d-flex justify-content-between align-items-center">
+                <span class="text-muted">© 2024 VirtualArtistry. All rights reserved.</span>
+                <div>
+                    <a class="nav-link d-inline-block" href="#">Logout</a>
+                    <a class="btn btn-primary d-inline-block" href="#">Register</a>
+                    <a class="nav-link d-inline-block" href="#">Login</a>
+                </div>
+            </div>
+        </div>
     </footer>
 </body>
 
