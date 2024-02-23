@@ -5,4 +5,5 @@ from .models import Art
 # Create your views here.
 class ArtList(generic.ListView):
     queryset = Art.objects.all()
-    template_name = "artwork_list.html"
+    template_name = "index.html"
+    paginate_by = 6
