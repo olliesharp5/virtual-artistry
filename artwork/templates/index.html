@@ -3,11 +3,29 @@
 {% block content %}
 
 <!-- index.html content starts here -->
-    <h1>Artwork list</h1>
-    {% for art in object_list %}
-    <h2>{{art.title}}</h2>
-    <p>Author: {{art.artist}}</p>
-    {% endfor %}
+<div class="row">
+    <p>The filters will go here</p>
+</div>
+
+<div class="album py-5 bg-body-tertiary">
+    <div class="container">
+
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+        <div class="col">
+            {% for art in object_list %}
+          <div class="card shadow-sm">
+            <img src="/static/images/placeholder_image.png" alt="">
+            <div class="card-body">
+              <p class="card-text">{{art.title}}</p>
+              <p class="card-text">Artist: {{art.artist}}</p>
+              <div class="d-flex justify-content-between align-items-center">
+                <small class="text-body-secondary">9 mins</small>
+              </div>
+            </div>
+          </div>
+        </div>
+            {% endfor %}
+    
 <!-- index.html content ends here -->
 
 {% endblock %}
