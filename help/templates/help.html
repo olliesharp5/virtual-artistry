@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<div class="row justify-content-center">
+    <div class="col-12 col-md-6 my-5">
+        <h2>Customer Service</h2>
+        <p>Do you require assistance from our customer service team?
+            Complete the form below and we would be happy to help you</p>
+
+        <form method="post">
+            {{ help_form | crispy }}
+            {% csrf_token %}
+            <button class="btn btn-secondary" type="submit">Submit</button>
+        </form>
+    </div>
+</div>
+</div>
+{% endblock %}
