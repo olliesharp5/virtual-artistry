@@ -3,32 +3,38 @@
 {% block content %}
 
 <div class="container mt-5">
-    <div class="row">
-        <div class="col-md-9">
-            <img src="/static/images/placeholder_image.png" class="img-fluid" alt="Artwork Image">
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-12">
+                <a href="{% url 'home' %}" class="btn btn-secondary mb-3">Back to Artwork</a>
+            </div>
         </div>
-        <div class="col-md-3">
-            <h3 id="artwork-title">{{ art.title }}</h3>
-            <p id="artist-name">{{ art.artist }}</p>
-            <p id="location">Location</p>
-            <p id="price">{{ art.price }}</p>
-            <p id="year">{{ art.year }}</p>
-            <p id="condition">Condition</p>
-            <h5>About</h5>
-            <p id="about-artwork">{{ art.about }}</p>
-            <button class="btn btn-primary">Contact Seller</button>
-            <button class="btn btn-secondary">Like Artwork</button>
-            <button class="btn btn-secondary">Review Artwork</button>
+        <div class="row">
+            <div class="col-md-9">
+                <img src="/static/images/placeholder_image.png" class="img-fluid" alt="Artwork Image">
+            </div>
+            <div class="col-md-3">
+                <h3 id="artwork-title">{{ art.title }}</h3>
+                <p id="artist-name">{{ art.artist }}</p>
+                <p id="location">Location</p>
+                <p id="price">{{ art.price }}</p>
+                <p id="year">{{ art.year }}</p>
+                <p id="condition">Condition</p>
+                <h5>About</h5>
+                <p id="about-artwork">{{ art.about }}</p>
+                <button class="btn btn-primary">Contact Seller</button>
+                <button class="btn btn-secondary">Like Artwork</button>
+                <button class="btn btn-secondary">Review Artwork</button>
+            </div>
         </div>
-    </div>
-    <div class="row mt-5">
-        <div class="col-md-12">
-            <h5>Reviews</h5>
-            <div id="reviews">
-                <!-- Reviews will be populated here -->
+        <div class="row mt-5">
+            <div class="col-md-12">
+                <h5>Reviews</h5>
+                <div id="reviews">
+                    <!-- Reviews will be populated here -->
+                </div>
             </div>
         </div>
     </div>
-</div>
 
-{% endblock %}
+    {% endblock %}
