@@ -59,10 +59,13 @@
                 </div>
                 <div class="row mt-5">
                     <div class="col-md-12">
-                        <h5>Reviews</h5>
-                        <div id="reviews">
-                            <!-- Reviews will be populated here -->
+                        {% for review in reviews %}
+                        <div class="review">
+                            <h5>{{ review.author.username }}</h5>
+                            <p>{{ review.body }}</p>
+                            <p>Rating: {{ review.rating }}</p>
                         </div>
+                        {% endfor %}
                     </div>
                 </div>
             </div>

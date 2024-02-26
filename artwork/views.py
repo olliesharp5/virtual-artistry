@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from django.views import generic
-from .models import Art
+from .models import Art, Review
 from .forms import ReviewForm
 
 # Create your views here.
@@ -18,4 +18,5 @@ def art_details(request, art_slug):
         review.art = art
         review.author = request.user  # Set the author to the current user
         review.save()
-    return render(request, 'art_detail.html', {'art': art, 'review_form': form})
+    reviews = Review.objects.filter(art=art, approved=True)  # Fetch approved reviews
+    return render(request, 'art_detail.html', {'art': art, 'review_form': form, 'reviews': reviews})
