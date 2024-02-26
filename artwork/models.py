@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.core.validators import MinValueValidator, MaxValueValidator
+from artists.models import ArtistProfile
 
 CONDITION = ((0, "Excellent"), (1, "Good"), (2, "Worn"))
 STATUS = ((0, "Draft"), (1, "Published"))
@@ -11,7 +12,7 @@ class Art(models.Model):
     title = models.CharField(max_length=100, unique=True)
     slug = models.SlugField(max_length=100, unique=True)
     artist = models.ForeignKey(
-        User, on_delete=models.CASCADE, related_name="art_posts"
+        ArtistProfile, on_delete=models.CASCADE, related_name="art_posts"
     )
     about = models.TextField()
     # image = CloudinaryField('image', default='placeholder')
