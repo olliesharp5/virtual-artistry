@@ -8,6 +8,7 @@ class ArtistProfile(models.Model):
     location = models.TextField()
   # profile_image = CloudinaryField('image', default='placeholder')
     about = models.TextField()
+    email = models.EmailField()
 
     def __str__(self):
         return self.name
