@@ -11,20 +11,36 @@
         </div>
     </div>
     <div class="row">
-      <div class="col-lg-8 mx-auto">
-        <div class="card">
-          <div class="card-body text-center">
-            <img src="/static/images/nobody.jpg" class="rounded-circle img-fluid mb-3" alt="Profile Picture" width="150">
-            <h3 class="card-title">{{artist.name}}</h3>
-            <h4 class="card-subtitle mb-3 text-muted">{{artist.location}}</h4>
-            <p class="card-text">{{artist.about}}</p>
-          </div>
+        <div class="col-lg-8 mx-auto">
+            <div class="card">
+                <div class="card-body text-center">
+                    <img src="/static/images/nobody.jpg" class="rounded-circle img-fluid mb-3" alt="Profile Picture"
+                        width="150">
+                    <h3 class="card-title">{{artist.name}}</h3>
+                    <h4 class="card-subtitle mb-3 text-muted">{{artist.location}}</h4>
+                    <p class="card-text">{{artist.about}}</p>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
-  </div>
+    <div class="row">
+        <div class="album py-5 bg-body-tertiary">
+            <div class="container">
+
+                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                    <div class="col">
+                        {% for art in object_list %}
+                        <a href="{% url 'art_details' art.slug %}">
+                            <div class="card shadow-sm">
+                                <img src="/static/images/placeholder_image.png" alt="">
+                            </div>
+                        </a>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
 
 
-<!-- artist_profile.html content ends here -->
+            <!-- artist_profile.html content ends here -->
 
-{% endblock %}
+            {% endblock %}

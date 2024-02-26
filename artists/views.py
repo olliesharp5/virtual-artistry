@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from django.views import generic
 from .models import ArtistProfile
+from artwork.models import Art
 
 # Create your views here.
 class ArtistList(generic.ListView):
@@ -11,4 +12,5 @@ class ArtistList(generic.ListView):
 
 def artist_profile(request, artist_slug):
     artist = get_object_or_404(ArtistProfile, slug=artist_slug)
-    return render(request, 'artist_profile.html', {'artist': artist})
+    artworks = Art.objects.filter(artist=artist)
+    return render(request, 'artist_profile.html', {'artist': artist, 'object_list': artworks})
