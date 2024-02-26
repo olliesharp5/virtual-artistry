@@ -16,13 +16,15 @@
                 <img src="/static/images/placeholder_image.png" class="img-fluid" alt="Artwork Image">
             </div>
             <div class="col-md-3">
-                <h3 id="artwork-title">{{ art.title }}</h3>
-                <p id="artist-name">{{ art.artist }}</p>
-                <p id="location">{{ art.artist.location }}</p>
+                <h1 id="artwork-title">{{ art.title }}</h1>
+                <br>
+                <h3 id="artist-name">{{ art.artist }}</h3>
+                <h4 id="location">{{ art.artist.location }}</h4>
+                <br>
                 <p id="price">Price: £{{ art.price }}</p>
                 <p id="year">Year: {{ art.year }}</p>
                 <p id="condition">Condition: {{ art.get_condition_display }}</p>
-                <h5>About</h5>
+                <br>
                 <p id="about-artwork">{{ art.about }}</p>
                 <button class="btn btn-primary">Contact Seller</button>
                 <button class="btn btn-secondary">Like Artwork</button>
