@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.core.validators import MinValueValidator, MaxValueValidator
 
 CONDITION = ((0, "Excellent"), (1, "Good"), (2, "Worn"))
 STATUS = ((0, "Draft"), (1, "Published"))
@@ -35,6 +36,7 @@ class Review(models.Model):
         User, on_delete=models.CASCADE, related_name="reviewer"
     )
     body = models.TextField()
+    rating = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(5)])
     approved = models.BooleanField(default=False)
     created_on = models.DateTimeField(auto_now_add=True)
 
