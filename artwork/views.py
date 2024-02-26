@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from django.views import generic
 from .models import Art, Review
+from artists.models import ArtistProfile
 from .forms import ReviewForm
 
 # Create your views here.

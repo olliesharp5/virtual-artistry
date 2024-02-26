@@ -18,10 +18,10 @@
             <div class="col-md-3">
                 <h3 id="artwork-title">{{ art.title }}</h3>
                 <p id="artist-name">{{ art.artist }}</p>
-                <p id="location">Location</p>
-                <p id="price">{{ art.price }}</p>
-                <p id="year">{{ art.year }}</p>
-                <p id="condition">Condition</p>
+                <p id="location">{{ art.artist.location }}</p>
+                <p id="price">Price: £{{ art.price }}</p>
+                <p id="year">Year: {{ art.year }}</p>
+                <p id="condition">Condition: {{ art.get_condition_display }}</p>
                 <h5>About</h5>
                 <p id="about-artwork">{{ art.about }}</p>
                 <button class="btn btn-primary">Contact Seller</button>
