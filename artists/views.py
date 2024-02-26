@@ -9,6 +9,6 @@ class ArtistList(generic.ListView):
     paginate_by = 6
 
 
-def artist_profile(request, artist_id):
-    artist = get_object_or_404(ArtistProfile, pk=artist_id)
+def artist_profile(request, artist_slug):
+    artist = get_object_or_404(ArtistProfile, slug=artist_slug)
     return render(request, 'artist_profile.html', {'artist': artist})
