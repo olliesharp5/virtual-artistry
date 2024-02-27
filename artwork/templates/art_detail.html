@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-
+{% load static %}
 {% load crispy_forms_tags %}
 
 {% block content %}
@@ -69,13 +69,26 @@
                             <h5>{{ review.author.username }}</h5>
                             <p>{{ review.body }}</p>
                             <p>Rating: {{ review.rating }}/5</p>
+                            {% if not review.approved and review.author == user %}
+                            <p class="approval">
+                                This review is awaiting approval
+                            </p>
+                            {% endif %}
+                            {% if user.is_authenticated and review.author == user %}
+                            <button class="btn btn-edit" data-comment_id="{{ review.id }}">Edit</button>
+                            {% endif %}
                         </div>
-                        {% endfor %}
                     </div>
+                    {% endfor %}
                 </div>
             </div>
         </div>
     </div>
 </div>
 </div>
+</div>
+{% endblock %}
+
+{% block extras %}
+<script src="{% static 'js/review.js' %}"></script>
 {% endblock %}
