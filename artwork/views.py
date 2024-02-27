@@ -24,7 +24,7 @@ def art_details(request, art_slug):
     return render(request, 'art_detail.html', {'art': art, 'review_form': form, 'reviews': reviews})
 
 
-def review_edit(request, slug, review_id):
+def review_edit(request, review_id):
     """
     view to edit reviews
     """

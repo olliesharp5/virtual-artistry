@@ -45,12 +45,12 @@
 
                             <!-- Modal body -->
                             <div class="modal-body">
-                                <form method="post">
+                                <form class= "reviewform" method="post">
                                     {% csrf_token %}
                                     {{ review_form|crispy }}
                                     <!-- Modal footer -->
                                     <div class="modal-footer">
-                                        <button type="submit" class="btn btn-primary">Submit Review</button>
+                                        <button id="submitButton" type="submit" class="btn btn-primary">Submit Review</button>
                                         <button type="button" class="btn btn-secondary"
                                             data-bs-dismiss="modal">Close</button>
                                     </div>
@@ -67,7 +67,7 @@
                         {% for review in reviews %}
                         <div class="review">
                             <h5>{{ review.author.username }}</h5>
-                            <p>{{ review.body }}</p>
+                            <p id="review{{ review.id }}">{{ review.body }}</p>
                             <p>Rating: {{ review.rating }}/5</p>
                             {% if not review.approved and review.author == user %}
                             <p class="approval">
@@ -75,7 +75,7 @@
                             </p>
                             {% endif %}
                             {% if user.is_authenticated and review.author == user %}
-                            <button class="btn btn-edit" data-comment_id="{{ review.id }}">Edit</button>
+                            <button class="btn btn-edit" data-review_id="{{ review.id }}">Edit</button>
                             {% endif %}
                         </div>
                     </div>
