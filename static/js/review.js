@@ -3,6 +3,10 @@ const reviewText = document.getElementById("id_body");
 const reviewForm = document.querySelector(".reviewform");
 const submitButton = document.getElementById("submitButton");
 
+const deleteModal = new bootstrap.Modal(document.getElementById("deleteModal"));
+const deleteButtons = document.getElementsByClassName("btn-delete");
+const deleteConfirm = document.getElementById("deleteConfirm");
+
 // Get the modal
 const modal = new bootstrap.Modal(document.getElementById('myModal'));
 
@@ -22,3 +26,12 @@ for (let button of editButtons) {
         modal.show();
     });
 }
+
+for (let button of deleteButtons) {
+    button.addEventListener("click", (e) => {
+      let reviewId = e.target.getAttribute("data-review_id");
+      deleteConfirm.href = `delete_review/${reviewId}/`;
+      console.log(reviewId);  // console.log debug
+      deleteModal.show();
+    });
+  }
