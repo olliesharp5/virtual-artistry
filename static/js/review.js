@@ -15,7 +15,7 @@ for (let button of editButtons) {
         console.log("Review content:", reviewContent); // console.log debug
         reviewText.value = reviewContent;
         submitButton.innerText = "Update";
-        reviewForm.setAttribute("action", `/edit_review/${reviewId}/`);
+        reviewForm.setAttribute("action", `edit_review/${reviewId}/`);
         console.log("Form action:", reviewForm.getAttribute("action")); // console.log debug
 
         // Show the modal

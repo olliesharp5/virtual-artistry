@@ -179,6 +179,7 @@ No errors were found when passing through the contrast validator.
 #### Fixed Bugs
 
 * Unable to render crispyforms 
+* Form unable to POST to update a review due to an error in url.py filepath. /art/ needed in front of urlpattern
 
 #### Unfixed Bugs
 

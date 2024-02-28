@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404, reverse
 from django.views import generic
+from django.contrib import messages
 from django.http import HttpResponseRedirect
 from .models import Art, Review
 from artists.models import ArtistProfile
@@ -31,7 +32,7 @@ def review_edit(request, art_slug, review_id):
     if request.method == "POST":
 
         queryset = Review.objects.filter(approved=True)
-        product = get_object_or_404(queryset, slug=art_slug)
+        product = get_object_or_404(Art, slug=art_slug)
         review = get_object_or_404(Review, pk=review_id)
         review_form = ReviewForm(data=request.POST, instance=review)
 
