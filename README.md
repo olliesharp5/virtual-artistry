@@ -180,6 +180,7 @@ No errors were found when passing through the contrast validator.
 
 * Unable to render crispyforms 
 * Form unable to POST to update a review due to an error in url.py filepath. /art/ needed in front of urlpattern
+* reviewId coming throuigh as null. Debugged Js using console.log queries, amended the getAttribute value to data-review_id from review_id to obtain the correct reviewid value. 
 
 #### Unfixed Bugs
 
