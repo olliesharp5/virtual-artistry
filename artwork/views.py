@@ -24,14 +24,14 @@ def art_details(request, art_slug):
     return render(request, 'art_detail.html', {'art': art, 'review_form': form, 'reviews': reviews})
 
 
-def review_edit(request, slug, review_id):
+def review_edit(request, art_slug, review_id):
     """
     view to edit reviews
     """
     if request.method == "POST":
 
         queryset = Review.objects.filter(approved=True)
-        product = get_object_or_404(queryset, slug=slug)
+        product = get_object_or_404(queryset, slug=art_slug)
         review = get_object_or_404(Review, pk=review_id)
         review_form = ReviewForm(data=request.POST, instance=review)
 
@@ -44,4 +44,4 @@ def review_edit(request, slug, review_id):
         else:
             messages.add_message(request, messages.ERROR, 'Error updating review!')
     
-    return HttpResponseRedirect(reverse('art_detail', args=[slug]))
+    return HttpResponseRedirect(reverse('art_detail', args=[art_slug]))
