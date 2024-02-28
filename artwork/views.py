@@ -44,4 +44,4 @@ def review_edit(request, art_slug, review_id):
         else:
             messages.add_message(request, messages.ERROR, 'Error updating review!')
     
-    return HttpResponseRedirect(reverse('art_detail', args=[art_slug]))
+    return HttpResponseRedirect(reverse('art_details', args=[art_slug]))
