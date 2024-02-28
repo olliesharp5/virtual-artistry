@@ -15,6 +15,7 @@ class ArtList(generic.ListView):
 
 def art_details(request, art_slug):
     art = get_object_or_404(Art, slug=art_slug)
+    artist_profile = art.artist
     form = ReviewForm(request.POST or None)
     if form.is_valid():
         review = form.save(commit=False)
@@ -22,7 +23,7 @@ def art_details(request, art_slug):
         review.author = request.user  # Set the author to the current user
         review.save()
     reviews = Review.objects.filter(art=art, approved=True)  # Fetch approved reviews
-    return render(request, 'art_detail.html', {'art': art, 'review_form': form, 'reviews': reviews})
+    return render(request, 'art_detail.html', {'art': art, 'review_form': form, 'reviews': reviews, 'artist_profile': artist_profile})
 
 
 def review_edit(request, art_slug, review_id):

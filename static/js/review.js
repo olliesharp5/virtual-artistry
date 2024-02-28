@@ -8,7 +8,7 @@ const deleteButtons = document.getElementsByClassName("btn-delete");
 const deleteConfirm = document.getElementById("deleteConfirm");
 
 // Get the modal
-const modal = new bootstrap.Modal(document.getElementById('myModal'));
+const modal = new bootstrap.Modal(document.getElementById('reviewModal'));
 
 for (let button of editButtons) {
     button.addEventListener("click", (e) => {

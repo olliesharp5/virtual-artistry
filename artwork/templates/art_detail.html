@@ -26,29 +26,58 @@
                 <p id="condition">Condition: {{ art.get_condition_display }}</p>
                 <br>
                 <p id="about-artwork">{{ art.about }}</p>
-                <button class="btn btn-primary">Contact Seller</button>
-                <button class="btn btn-secondary">Like Artwork</button>
-                <!-- Button to trigger modal -->
-                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">Review
-                    Artwork</button>
+                <!-- Button to trigger contact modal -->
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                    data-bs-target="#contactModal">Contact Seller</button>
 
-                <!-- Modal to be displayed -->
-                <div class="modal fade" id="myModal">
+                <!-- Contact Modal to be displayed -->
+                <div class="modal fade" id="contactModal">
                     <div class="modal-dialog">
                         <div class="modal-content">
 
-                            <!-- Modal Header -->
+                            <!-- Contact Modal Header -->
+                            <div class="modal-header">
+                                <h4 class="modal-title">Contact {{ art.artist }}</h4>
+                                <button type="button" class="close" data-bs-dismiss="modal">&times;</button>
+                            </div>
+
+                            <!-- Contact Modal body -->
+                            <div class="modal-body">
+                                <h5>Email: {{ artist_profile.email }} </h5>
+                                    <!-- Contact Modal footer -->
+                                    <div class="modal-footer">
+                                        <button id="submitButton" type="submit" class="btn btn-primary">Submit
+                                            Message</button>
+                                        <button type="button" class="btn btn-secondary"
+                                            data-bs-dismiss="modal">Close</button>
+                                    </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="btn btn-secondary">Like Artwork</button>
+                <!-- Button to trigger review modal -->
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                    data-bs-target="#reviewModal">Review
+                    Artwork</button>
+
+                <!-- Review Modal to be displayed -->
+                <div class="modal fade" id="reviewModal">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+
+                            <!-- Review Modal Header -->
                             <div class="modal-header">
                                 <h4 class="modal-title">Review Artwork</h4>
                                 <button type="button" class="close" data-bs-dismiss="modal">&times;</button>
                             </div>
 
-                            <!-- Modal body -->
+                            <!-- Review Modal body -->
                             <div class="modal-body">
                                 <form class="reviewform" method="post">
                                     {% csrf_token %}
                                     {{ review_form|crispy }}
-                                    <!-- Modal footer -->
+                                    <!-- Review Modal footer -->
                                     <div class="modal-footer">
                                         <button id="submitButton" type="submit" class="btn btn-primary">Submit
                                             Review</button>
