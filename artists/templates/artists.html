@@ -5,7 +5,10 @@
 
 <!-- artists.html content starts here -->
 <div class="row">
-  <button class="btn btn-primary" href="#">Filters</button>
+  <form method="get">
+    {{ filter.form.as_p }}
+    <button class="btn btn-primary" type="submit">Filter</button>
+  </form>
 </div>
 
 <div class="album py-5 bg-body-tertiary">
