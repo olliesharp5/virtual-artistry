@@ -47,7 +47,8 @@
 
                             <!-- Contact Modal body -->
                             <div class="modal-body">
-                                <h5>Email: {{ artist_profile.email }} </h5>
+                                <h5>Email: <span id="emailToCopy">{{ artist_profile.email }}</span> <button
+                                        id="copyButton" class="btn btn-secondary">Copy</button></h5>
                                 <!-- Contact Modal footer -->
                                 <div class="modal-footer">
                                     <button id="submitButton" type="submit" class="btn btn-primary">Submit
@@ -148,4 +149,5 @@
 
 {% block extras %}
 <script src="{% static 'js/review.js' %}"></script>
+<script src="{% static 'js/script.js' %}"></script>
 {% endblock %}
