@@ -11,6 +11,6 @@ class ArtistList(generic.ListView):
 
 
 def artist_profile(request, artist_slug):
-    artist = get_object_or_404(ArtistProfile, slug=artist_slug)
-    artworks = Art.objects.filter(artist=artist)
-    return render(request, 'artist_profile.html', {'artist': artist, 'object_list': artworks})
+    artistprofile = get_object_or_404(ArtistProfile, slug=artist_slug)
+    artworks = Art.objects.filter(artist=artistprofile)
+    return render(request, 'artist_profile.html', {'artistprofile': artistprofile, 'object_list': artworks})
