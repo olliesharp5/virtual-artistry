@@ -7,7 +7,7 @@ class ArtistProfile(models.Model):
     name = models.CharField(max_length=100)
     slug = models.SlugField(max_length=100, unique=True)
     location = models.TextField()
-    artist_image = CloudinaryField('artist_image', default='placeholder')
+    artist_image = CloudinaryField('artist_image', default='artist_placeholder')
     about = models.TextField()
     email = models.EmailField()
 

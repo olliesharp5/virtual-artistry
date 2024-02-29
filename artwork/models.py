@@ -16,7 +16,7 @@ class Art(models.Model):
         ArtistProfile, on_delete=models.CASCADE, related_name="art_posts"
     )
     about = models.TextField()
-    art_image = CloudinaryField('art_image', default='placeholder')
+    art_image = CloudinaryField('art_image', default='art_placeholder')
     price = models.DecimalField(max_digits=10, decimal_places=2)
     year = models.DateField()
     condition = models.IntegerField(choices=CONDITION, default=0)

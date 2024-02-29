@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block content %}
 
@@ -15,7 +16,11 @@
         {% for art in object_list %}
         <a href="{% url 'art_details' art.slug %}">
           <div class="card shadow-sm">
-            <img src="/static/images/placeholder_image.png" alt="">
+            {% if "art_placeholder" in art.art_image.url %}
+            <img class="card-img-top" src="{% static 'images/placeholder_image' %}" alt="artwork image">
+            {% else %}
+            <img class="card-img-top" src=" {{ art.art_image.url }}" alt="{{ art.title }}">
+            {% endif %}
             <div class="card-body">
               <p class="card-text">{{art.title}}</p>
               <p class="card-text">{{art.artist}}</p>
