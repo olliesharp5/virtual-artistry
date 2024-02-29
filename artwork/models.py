@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.core.validators import MinValueValidator, MaxValueValidator
+from cloudinary.models import CloudinaryField
 from artists.models import ArtistProfile
 
 CONDITION = ((0, "Excellent"), (1, "Good"), (2, "Worn"))
@@ -15,7 +16,7 @@ class Art(models.Model):
         ArtistProfile, on_delete=models.CASCADE, related_name="art_posts"
     )
     about = models.TextField()
-    # image = CloudinaryField('image', default='placeholder')
+    art_image = CloudinaryField('art_image', default='placeholder')
     price = models.DecimalField(max_digits=10, decimal_places=2)
     year = models.DateField()
     condition = models.IntegerField(choices=CONDITION, default=0)
