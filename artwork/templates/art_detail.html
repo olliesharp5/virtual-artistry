@@ -30,6 +30,7 @@
                 <p id="condition">Condition: {{ art.get_condition_display }}</p>
                 <br>
                 <p id="about-artwork">{{ art.about }}</p>
+                {% if user.is_authenticated %}
                 <!-- Button to trigger contact modal -->
                 <button type="button" class="btn btn-primary" data-bs-toggle="modal"
                     data-bs-target="#contactModal">Contact Seller</button>
@@ -61,11 +62,14 @@
                     </div>
                 </div>
                 <button class="btn btn-secondary">Like Artwork</button>
+
                 <!-- Button to trigger review modal -->
                 <button type="button" class="btn btn-primary" data-bs-toggle="modal"
                     data-bs-target="#reviewModal">Review
                     Artwork</button>
-
+                {% else %}
+                <p>Please log in to purchase or interact with the advert</p>
+                {% endif %}
                 <!-- Review Modal to be displayed -->
                 <div class="modal fade" id="reviewModal">
                     <div class="modal-dialog">
