@@ -16,8 +16,8 @@
         {% for art in object_list %}
         <a href="{% url 'art_details' art.slug %}">
           <div class="card shadow-sm">
-            {% if "art_placeholder" in art.art_image.url %}
-            <img class="card-img-top" src="{% static 'images/placeholder_image' %}" alt="artwork image">
+            {% if not art.art_image or "placeholder" in art.art_image.url %}
+            <img class="card-img-top" src="{% static 'images/placeholder_image.png' %}" alt="artwork image">
             {% else %}
             <img class="card-img-top" src=" {{ art.art_image.url }}" alt="{{ art.title }}">
             {% endif %}
