@@ -5,12 +5,23 @@ from django.http import HttpResponseRedirect
 from .models import Art, Review
 from artists.models import ArtistProfile
 from .forms import ReviewForm
+from .filters import ArtFilter
 
 # Create your views here.
 class ArtList(generic.ListView):
-    queryset = Art.objects.all()
+    model = Art
     template_name = "index.html"
     paginate_by = 6
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        self.filter = ArtFilter(self.request.GET, queryset=queryset)
+        return self.filter.qs
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['filter'] = self.filter
+        return context
 
 
 def art_details(request, art_slug):
