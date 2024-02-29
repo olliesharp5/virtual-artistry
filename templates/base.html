@@ -74,17 +74,6 @@
 </nav>
 
 <main>
-    {% if not user.is_authenticated %}
-    <div class="row justify-content-center text-center">
-        <div class="col-12 col-md-6 my-5">
-            <h2>Welcome to Virtual Artistry</h2>
-            <p>It seems you aren't logged in...</p> 
-            <p>Login or register to have all features avaliable to you.</p>
-        </div>
-    </div>
-    {% endif %}
-
-
     {% block content %}
     <!-- Content Goes here -->
     {% endblock content %}
