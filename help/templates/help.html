@@ -3,26 +3,24 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
+<div class="container h-100">
+    <div class="row h-100 justify-content-center align-items-center no-gutters">
+        <div class="col-12 col-md-6 shadow-lg d-flex align-items-center">
+            <div class="card">
+                <div class="card-body">
+                    <h2 class="card-title">Customer Service</h2>
+                    <p class="card-text">Do you require assistance from our customer service team?
+                        Complete the form below and we would be happy to help you</p>
 
-<div class="d-flex justify-content-center align-items-center min-vh-100">
-    <div class="container-fluid">
-        <div class="row justify-content-center">
-            <div class="col-12 col-md-6 my-5 shadow-lg">
-                <br>
-                <h2>Customer Service</h2>
-                <p>Do you require assistance from our customer service team?
-                    Complete the form below and we would be happy to help you</p>
-
-                <form method="post">
-                    {{ help_form | crispy }}
-                    {% csrf_token %}
-                    <button class="btn btn-secondary" type="submit">Submit</button>
-                    <button class="btn btn-secondary" type="reset">Clear</button>
-                </form>
-                <br>
+                    <form method="post">
+                        {{ help_form | crispy }}
+                        {% csrf_token %}
+                        <button class="btn btn-secondary" type="submit">Submit</button>
+                        <button class="btn btn-secondary" type="reset">Clear</button>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
 </div>
-
 {% endblock %}
