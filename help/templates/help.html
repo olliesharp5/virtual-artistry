@@ -4,17 +4,23 @@
 
 {% block content %}
 
-<div class="row justify-content-center">
-    <div class="col-12 col-md-6 my-5">
-        <h2>Customer Service</h2>
-        <p>Do you require assistance from our customer service team?
-            Complete the form below and we would be happy to help you</p>
+<div class="d-flex justify-content-center align-items-center min-vh-100">
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-6 my-5 shadow-lg">
+                <br>
+                <h2>Customer Service</h2>
+                <p>Do you require assistance from our customer service team?
+                    Complete the form below and we would be happy to help you</p>
 
-        <form method="post">
-            {{ help_form | crispy }}
-            {% csrf_token %}
-            <button class="btn btn-secondary" type="submit">Submit</button>
-        </form>
+                <form method="post">
+                    {{ help_form | crispy }}
+                    {% csrf_token %}
+                    <button class="btn btn-secondary" type="submit">Submit</button>
+                </form>
+                <br>
+            </div>
+        </div>
     </div>
 </div>
 
