@@ -61,9 +61,10 @@
                         </div>
                     </div>
                 </div>
+                <p>{{ art.like_set.count }} likes</p>
                 <form action="{% url 'like_artwork' art.slug %}" method="post">
                     {% csrf_token %}
-                    <button class="btn btn-secondary" type="submit">Like Artwork</button>
+                    <button class="btn btn-secondary" type="submit">{{ user_has_liked|yesno:"Unlike,Like" }}</button>
                 </form>
 
                 <!-- Button to trigger review modal -->
