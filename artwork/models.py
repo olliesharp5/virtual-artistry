@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.contrib.auth import get_user_model
 from django.core.validators import MinValueValidator, MaxValueValidator
 from cloudinary.models import CloudinaryField
 from artists.models import ArtistProfile
@@ -28,6 +29,17 @@ class Art(models.Model):
 
     def __str__(self):
         return f"The title of artwork post is {self.title}"
+
+
+class Like(models.Model):
+    user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
+    art = models.ForeignKey(Art, on_delete=models.CASCADE)
+
+    class Meta:
+        unique_together = ('user', 'art')
+
+    def __str__(self):
+        return f"{self.user.username} likes {self.art.title}"
 
 
 class Review(models.Model):
