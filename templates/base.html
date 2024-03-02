@@ -83,8 +83,10 @@
 <footer class="footer mt-auto py-3 bg-light">
     <div class="container">
         <div class="d-flex justify-content-between align-items-center">
-            <span class="text-muted">© 2024 VirtualArtistry. All rights reserved.</span>
-            <div>
+            <div class="d-flex justify-content-start">
+                <span class="text-muted">© 2024 VirtualArtistry. All rights reserved.</span>
+            </div>
+            <div class="d-flex justify-content-end">
                 {% if user.is_authenticated %}
                 <a class="nav-link d-inline-block {% if request.path == logout_url %}active{% endif %}"
                     href="{% url 'account_logout' %}">Logout</a>

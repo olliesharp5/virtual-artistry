@@ -2,6 +2,10 @@ body {
     font-family: 'Crimson Text', serif;
 }
 
+main {
+    background:	#bfb5b2;
+}
+
 .no-gutters {
     margin-right: 0;
     margin-left: 0;
@@ -15,4 +19,14 @@ body {
 
 h1 {
     color: blueviolet;
+}
+
+
+.welcome {
+    background: linear-gradient(0deg, white, rgb(219, 219, 219) 50%, white);
+}
+
+.nav {
+    background: #c7bbc9;
+    font-size: large;
 }
