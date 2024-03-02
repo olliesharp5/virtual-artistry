@@ -1,9 +1,10 @@
 body {
     font-family: 'Crimson Text', serif;
+    color: #5e3c58;
 }
 
 main {
-    background:	#bfb5b2;
+    background-image: url(/static/images/background-texture.jpg)
 }
 
 .no-gutters {
@@ -17,16 +18,10 @@ main {
     padding-left: 0;
 }
 
-h1 {
-    color: blueviolet;
+
+.navbar-brand {
+    font-weight: bold;
+    font-size: x-large;
+    color: #5e3c58 !important;
 }
 
-
-.welcome {
-    background: linear-gradient(0deg, white, rgb(219, 219, 219) 50%, white);
-}
-
-.nav {
-    background: #c7bbc9;
-    font-size: large;
-}
