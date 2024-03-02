@@ -8,10 +8,10 @@
     <div class="container mt-5">
         <div class="row">
             <div class="col-md-12">
-                <a href="{% url 'home' %}" class="btn btn-secondary mb-3">Back to Artwork</a>
+                <a href="{% url 'home' %}" class="btn btn-secondary mb-3 loading-item1">Back to Artwork</a>
             </div>
         </div>
-        <div class="row">
+        <div class="row loading-item2">
             <div class="col-md-9">
                 {% if not art.art_image or "placeholder" in art.art_image.url %}
                 <img class="img-fluid" src="{% static 'images/placeholder_image.png' %}" alt="{{ art.title }}">
@@ -19,7 +19,7 @@
                 <img class="img-fluid" src=" {{ art.art_image.url }}" alt="{{ art.title }}">
                 {% endif %}
             </div>
-            <div class="col-md-3">
+            <div class="col-md-3 loading-item3">
                 <h1 id="artwork-title">{{ art.title }}</h1>
                 <br>
                 <h3 id="artist-name">{{ art.artist }}</h3>

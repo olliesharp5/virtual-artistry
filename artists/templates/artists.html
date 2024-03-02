@@ -4,7 +4,7 @@
 {% block content %}
 
 <!-- artists.html content starts here -->
-<div class="row">
+<div class="row loading-item2">
   <form method="get">
     {{ filter.form.as_p }}
     <button class="btn btn-primary" type="submit">Filter</button>
@@ -18,7 +18,7 @@
       <div class="col">
         {% for artistprofile in object_list %}
         <a href="{% url 'artist_profile' artistprofile.slug %}">
-          <div class="card shadow-sm">
+          <div class="card shadow-sm loading-item3">
             {% if not artistprofile.artist_image or "placeholder" in artistprofile.artist_image.url %}
             <img class="card-img-top" src="{% static 'images/nobody.jpg' %}" alt="artist image">
             {% else %}
