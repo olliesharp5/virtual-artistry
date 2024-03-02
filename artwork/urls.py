@@ -1,5 +1,6 @@
 from . import views
 from django.urls import path
+from .views import like_artwork, unlike_artwork
 
 
 urlpatterns = [
@@ -9,4 +10,6 @@ urlpatterns = [
          views.review_edit, name='review_edit'),
     path('art/<slug:art_slug>/delete_review/<int:review_id>/',
          views.review_delete, name='review_delete'),
+    path('art/<slug:art_slug>/like/', like_artwork, name='like_artwork'),
+    path('art/<slug:art_slug>/unlike/', unlike_artwork, name='unlike_artwork'),
 ]

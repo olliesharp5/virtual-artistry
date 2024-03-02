@@ -61,7 +61,10 @@
                         </div>
                     </div>
                 </div>
-                <button class="btn btn-secondary">Like Artwork</button>
+                <form action="{% url 'like_artwork' art.slug %}" method="post">
+                    {% csrf_token %}
+                    <button class="btn btn-secondary" type="submit">Like Artwork</button>
+                </form>
 
                 <!-- Button to trigger review modal -->
                 <button type="button" class="btn btn-primary" data-bs-toggle="modal"

@@ -1,8 +1,8 @@
-from django.shortcuts import render, get_object_or_404, reverse
+from django.shortcuts import render, get_object_or_404, reverse, redirect
 from django.views import generic
 from django.contrib import messages
 from django.http import HttpResponseRedirect
-from .models import Art, Review
+from .models import Art, Review, Like
 from artists.models import ArtistProfile
 from .forms import ReviewForm
 from .filters import ArtFilter
@@ -34,7 +34,19 @@ def art_details(request, art_slug):
         review.author = request.user  # Set the author to the current user
         review.save()
     reviews = Review.objects.filter(art=art, approved=True)  # Fetch approved reviews
-    return render(request, 'art_detail.html', {'art': art, 'review_form': form, 'reviews': reviews, 'artist_profile': artist_profile})
+    return render(request, 'art_detail.html', {'art': art, 'review_form': form, 'reviews': reviews, 'artist_profile': artist_profile,})
+
+
+def like_artwork(request, art_slug):
+    artwork = get_object_or_404(Art, slug=art_slug)
+    Like.objects.get_or_create(user=request.user, art=artwork)
+    return redirect('art_details', art_slug=artwork.slug)
+
+
+def unlike_artwork(request, art_slug):
+    artwork = get_object_or_404(Art, slug=art_slug)
+    Like.objects.filter(user=request.user, art=artwork).delete()
+    return redirect('art_details', art_slug=artwork.slug)
 
 
 def review_edit(request, art_slug, review_id):
@@ -58,7 +70,6 @@ def review_edit(request, art_slug, review_id):
             messages.add_message(request, messages.ERROR, 'Error updating review!')
     
     return HttpResponseRedirect(reverse('art_details', args=[art_slug]))
-
 
 
 def review_delete(request, art_slug, review_id):

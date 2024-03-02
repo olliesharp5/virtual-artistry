@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Art, Review
+from .models import Art, Review, Like
 from django_summernote.admin import SummernoteModelAdmin
 
 @admin.register(Art)
@@ -14,3 +14,5 @@ class ArtworkAdmin(SummernoteModelAdmin):
 # Register your models here.
 
 admin.site.register(Review)
+
+admin.site.register(Like)
