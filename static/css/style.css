@@ -4,7 +4,12 @@ body {
 }
 
 main {
-    background-image: url(/static/images/background-texture.jpg)
+    background-image: url(/static/images/background-texture.jpg);
+}
+
+a {
+    text-decoration: none;
+    color: #5e3c58;
 }
 
 .no-gutters {
@@ -23,5 +28,17 @@ main {
     font-weight: bold;
     font-size: x-large;
     color: #5e3c58 !important;
+}
+
+.card-title {
+    font-family: "Roboto", sans-serif;
+    font-weight: 900;
+    font-style: normal;
+    font-size: larger;
+}
+
+.card-artist {
+    font-family: "Roboto", sans-serif;
+    font-style: italic;
 }
 
