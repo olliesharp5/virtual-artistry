@@ -218,3 +218,5 @@ The performance of the website was tested with [Google Lighthouse](INSERT LINK T
 
 * The icon used for the favicon is from favicon.io
 * The icons in the footer were taken from Font Awesome
+* Credit provided for background image: https://unsplash.com/photos/white-painted-wall-with-black-line-vS3idIiYxX0?utm_content=creditShareLink&utm_medium=referral&utm_source=unsplash 
+* photos for artwork provided by Steve Johnson: https://wolfejohnson.com/

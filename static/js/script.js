@@ -10,9 +10,3 @@ document.getElementById("copyButton").addEventListener("click", function() {
     document.body.removeChild(document.getElementById('temp_element'))
     alert("Email copied to clipboard!")
 })
-
-// JQuery Code 
-
-$(document).ready(function(){
-    $(".loading-item").hide().fadeIn(2000);
-});
