@@ -35,7 +35,7 @@
     <div class="masonry row row-cols-2 row-cols-sm-3 row-cols-md-4 g-3">
       {% for art in object_list %}
       <div class="col mb-4">
-        <div class="card shadow-sm loading-item3">
+        <div class="card shadow-sm loading-item3 hover-effect">
           <a href="{% url 'art_details' art.slug %}">
             {% if not art.art_image or "placeholder" in art.art_image.url %}
             <img class="card-img-top" src="{% static 'images/placeholder_image.png' %}" alt="artwork image">

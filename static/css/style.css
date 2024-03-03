@@ -42,3 +42,10 @@ a {
     font-style: italic;
 }
 
+.hover-effect {
+    transition: transform .2s; /* Animation */
+  }
+  
+  .hover-effect:hover {
+    transform: scale(1.1);
+  }
