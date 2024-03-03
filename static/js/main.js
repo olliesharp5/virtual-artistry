@@ -1,20 +1,10 @@
+// Changes the opacity of the elements to 1 (completely opaque) when the document is ready. CSS handles fade in.
+
+$(document).ready(function(){
+    $(".loading-item1, .loading-item2, .loading-item3, .loading-item4").css('opacity', '1');
+});
+
 // JQuery Code 
-
-$(document).ready(function(){
-    $(".loading-item1").hide().fadeIn(500);
-});
-
-$(document).ready(function(){
-    $(".loading-item2").hide().fadeIn(1000);
-});
-
-$(document).ready(function(){
-    $(".loading-item3").hide().fadeIn(2000);
-});
-
-$(document).ready(function(){
-    $(".loading-item4").hide().fadeIn(2500);
-});
 
 $(document).ready(function(){
     $(".nav-link").hover(

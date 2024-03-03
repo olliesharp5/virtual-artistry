@@ -1,3 +1,13 @@
+.loading-item1, .loading-item2, .loading-item3, .loading-item4 {
+    opacity: 0;
+    transition: opacity 1.2s ease-in-out;
+}
+
+.loading-item1 { transition-delay: 0.2s; }
+.loading-item2 { transition-delay: 0.5s; }
+.loading-item3 { transition-delay: 0.7s; }
+.loading-item4 { transition-delay: 1s; }
+
 body {
     font-family: 'Crimson Text', serif;
     color: #5e3c58;
