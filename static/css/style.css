@@ -8,6 +8,11 @@
 .loading-item3 { transition-delay: 0.7s; }
 .loading-item4 { transition-delay: 1s; }
 
+.loading-cards {
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+
 body {
     font-family: 'Crimson Text', serif;
     color: #5e3c58;
