@@ -13,26 +13,29 @@
 
 <div class="album py-5 bg-body-tertiary">
   <div class="container">
-
     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+      {% for artistprofile in object_list %}
       <div class="col">
-        {% for artistprofile in object_list %}
         <a href="{% url 'artist_profile' artistprofile.slug %}">
-          <div class="card shadow-sm loading-item3">
+          <div class="card shadow-sm loading-item3 mx-auto">
             {% if not artistprofile.artist_image or "placeholder" in artistprofile.artist_image.url %}
-            <img class="card-img-top" src="{% static 'images/nobody.jpg' %}" alt="artist image">
+            <img class="card-img-top img-fluid" src="{% static 'images/nobody.jpg' %}" alt="artist image">
             {% else %}
-            <img class="card-img-top" src=" {{ artistprofile.artist_image.url }}" alt="{{ artistprofile.name }}">
+            <img class="card-img-top img-fluid" src=" {{ artistprofile.artist_image.url }}"
+              alt="{{ artistprofile.name }}">
             {% endif %}
             <div class="card-body">
-              <p class="card-text">{{artistprofile.name}}</p>
-              <p class="card-text">{{artistprofile.location}}</p>
+              <p class="card-text card-title">{{artistprofile.name}}</p>
+              <p class="card-text card-artist">{{artistprofile.location}}</p>
             </div>
           </div>
         </a>
       </div>
       {% endfor %}
+    </div>
+  </div>
+</div>
 
-      <!-- index.html content ends here -->
+<!-- index.html content ends here -->
 
-      {% endblock %}
+{% endblock %}

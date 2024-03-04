@@ -16,7 +16,8 @@
     <!-- Google Fonts CSS -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Roboto:ital,wght@0,500;0,700;0,900;1,500;1,700;1,900&display=swap"
+    <link
+        href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Roboto:ital,wght@0,500;0,700;0,900;1,500;1,700;1,900&display=swap"
         rel="stylesheet">
 
     <!-- Bootstrap CSS -->
@@ -46,6 +47,10 @@
             <li class="nav-item">
                 <a class="nav-link" href="{% url 'help' %}">Help</a>
             </li>
+            <!-- Blank space -->
+            <li class="nav-item" style="visibility: hidden;">&nbsp;</li>
+
+            <!-- End of blank space -->
             {% if user.is_authenticated %}
             <li class="nav-item">
                 <a class="nav-link {% if request.path == logout_url %}active{% endif %}" aria-current="page"
@@ -62,17 +67,20 @@
             </li>
             {% endif %}
         </ul>
-        {% if user.is_authenticated %}
-        <span class="navbar-text text-muted">
-            You are logged in as {{ user }}
-        </span>
-        {% else %}
-        <span class="navbar-text text-muted">
-            You are not logged in
-        </span>
-        {% endif %}
+        <div class="auth-text">
+            {% if user.is_authenticated %}
+            <span class="navbar-text text-muted">
+                You are logged in as {{ user }}
+            </span>
+            {% else %}
+            <span class="navbar-text text-muted">
+                You are not logged in
+            </span>
+            {% endif %}
+        </div>
     </div>
 </nav>
+
 
 <main class="flex-grow-1">
     {% block content %}
