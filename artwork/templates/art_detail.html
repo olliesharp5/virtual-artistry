@@ -11,126 +11,123 @@
                 <a href="{% url 'home' %}" class="btn btn-secondary mb-3 loading-item1">Back to Artwork</a>
             </div>
         </div>
-        <div class="row loading-item2">
-            <div class="col-md-9">
-                {% if not art.art_image or "placeholder" in art.art_image.url %}
-                <img class="img-fluid" src="{% static 'images/placeholder_image.png' %}" alt="{{ art.title }}">
-                {% else %}
-                <img class="img-fluid" src=" {{ art.art_image.url }}" alt="{{ art.title }}">
-                {% endif %}
-            </div>
-            <div class="col-md-3 loading-item3">
-                <h1 id="artwork-title">{{ art.title }}</h1>
-                <br>
-                <h3 id="artist-name">{{ art.artist }}</h3>
-                <h4 id="location">{{ art.artist.location }}</h4>
-                <br>
-                <p id="price">Price: £{{ art.price }}</p>
-                <p id="year">Year: {{ art.year }}</p>
-                <p id="condition">Condition: {{ art.get_condition_display }}</p>
-                <br>
-                <p id="about-artwork">{{ art.about }}</p>
-                {% if user.is_authenticated %}
-                <!-- Button to trigger contact modal -->
-                <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                    data-bs-target="#contactModal">Contact Seller</button>
+    </div>
 
-                <!-- Contact Modal to be displayed -->
-                <div class="modal fade" id="contactModal">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
+    <div class="row loading-item2">
+        <div class="col-md-9">
+            {% if not art.art_image or "placeholder" in art.art_image.url %}
+            <img class="img-fluid" src="{% static 'images/placeholder_image.png' %}" alt="{{ art.title }}">
+            {% else %}
+            <img class="img-fluid" src=" {{ art.art_image.url }}" alt="{{ art.title }}">
+            {% endif %}
+        </div>
+        <div class="col-md-3 loading-item3">
+            <h1 id="artwork-title">{{ art.title }}</h1>
+            <br>
+            <h3 id="artist-name">{{ art.artist }}</h3>
+            <h4 id="location">{{ art.artist.location }}</h4>
+            <br>
+            <p id="price">Price: £{{ art.price }}</p>
+            <p id="year">Year: {{ art.year }}</p>
+            <p id="condition">Condition: {{ art.get_condition_display }}</p>
+            <br>
+            <p id="about-artwork">{{ art.about }}</p>
+            {% if user.is_authenticated %}
+            <!-- Button to trigger contact modal -->
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#contactModal">Contact
+                Seller</button>
 
-                            <!-- Contact Modal Header -->
-                            <div class="modal-header">
-                                <h4 class="modal-title">Contact {{ art.artist }}</h4>
-                                <button type="button" class="close" data-bs-dismiss="modal">&times;</button>
+            <!-- Contact Modal to be displayed -->
+            <div class="modal fade" id="contactModal">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+
+                        <!-- Contact Modal Header -->
+                        <div class="modal-header">
+                            <h4 class="modal-title">Contact {{ art.artist }}</h4>
+                            <button type="button" class="close" data-bs-dismiss="modal">&times;</button>
+                        </div>
+
+                        <!-- Contact Modal body -->
+                        <div class="modal-body">
+                            <h5>Email: <span id="emailToCopy">{{ artist_profile.email }}</span> <button id="copyButton"
+                                    class="btn btn-secondary">Copy</button></h5>
+                            <!-- Contact Modal footer -->
+                            <div class="modal-footer">
+                                <button id="submitButton" type="submit" class="btn btn-primary">Submit
+                                    Message</button>
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                             </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <p>{{ art.like_set.count }} likes</p>
+            <form action="{% url 'like_artwork' art.slug %}" method="post">
+                {% csrf_token %}
+                <button class="btn btn-secondary" type="submit">{{ user_has_liked|yesno:"Unlike,Like" }}</button>
+            </form>
 
-                            <!-- Contact Modal body -->
-                            <div class="modal-body">
-                                <h5>Email: <span id="emailToCopy">{{ artist_profile.email }}</span> <button
-                                        id="copyButton" class="btn btn-secondary">Copy</button></h5>
-                                <!-- Contact Modal footer -->
+            <!-- Button to trigger review modal -->
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#reviewModal">Review
+                Artwork</button>
+            {% else %}
+            <p>Please log in to purchase or interact with the advert</p>
+            {% endif %}
+            <!-- Review Modal to be displayed -->
+            <div class="modal fade" id="reviewModal">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+
+                        <!-- Review Modal Header -->
+                        <div class="modal-header">
+                            <h4 class="modal-title">Review Artwork</h4>
+                            <button type="button" class="close" data-bs-dismiss="modal">&times;</button>
+                        </div>
+
+                        <!-- Review Modal body -->
+                        <div class="modal-body">
+                            <form class="reviewform" method="post">
+                                {% csrf_token %}
+                                {{ review_form|crispy }}
+                                <!-- Review Modal footer -->
                                 <div class="modal-footer">
                                     <button id="submitButton" type="submit" class="btn btn-primary">Submit
-                                        Message</button>
+                                        Review</button>
                                     <button type="button" class="btn btn-secondary"
                                         data-bs-dismiss="modal">Close</button>
                                 </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <p>{{ art.like_set.count }} likes</p>
-                <form action="{% url 'like_artwork' art.slug %}" method="post">
-                    {% csrf_token %}
-                    <button class="btn btn-secondary" type="submit">{{ user_has_liked|yesno:"Unlike,Like" }}</button>
-                </form>
-
-                <!-- Button to trigger review modal -->
-                <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                    data-bs-target="#reviewModal">Review
-                    Artwork</button>
-                {% else %}
-                <p>Please log in to purchase or interact with the advert</p>
-                {% endif %}
-                <!-- Review Modal to be displayed -->
-                <div class="modal fade" id="reviewModal">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-
-                            <!-- Review Modal Header -->
-                            <div class="modal-header">
-                                <h4 class="modal-title">Review Artwork</h4>
-                                <button type="button" class="close" data-bs-dismiss="modal">&times;</button>
-                            </div>
-
-                            <!-- Review Modal body -->
-                            <div class="modal-body">
-                                <form class="reviewform" method="post">
-                                    {% csrf_token %}
-                                    {{ review_form|crispy }}
-                                    <!-- Review Modal footer -->
-                                    <div class="modal-footer">
-                                        <button id="submitButton" type="submit" class="btn btn-primary">Submit
-                                            Review</button>
-                                        <button type="button" class="btn btn-secondary"
-                                            data-bs-dismiss="modal">Close</button>
-                                    </div>
-                                </form>
-                            </div>
+                            </form>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-md-8 card mb-4  mt-3 ">
-                    <h3>Reviews:</h3>
-                    <div class="card-body">
-                        {% for review in reviews %}
-                        <div class="review">
-                            <h5>{{ review.author.username }}</h5>
-                            <p id="review{{ review.id }}">{{ review.body }}</p>
-                            <p>Rating: {{ review.rating }}/5</p>
-                            {% if not review.approved and review.author == user %}
-                            <p class="approval">
-                                This review is awaiting approval
-                            </p>
-                            {% endif %}
-                            {% if user.is_authenticated and review.author == user %}
-                            <button class="btn btn-delete" data-review_id="{{ review.id }}">Delete</button>
-                            <button class="btn btn-edit" data-review_id="{{ review.id }}">Edit</button>
-                            {% endif %}
-                        </div>
+        </div> 
+        <div class="row">
+            <div class="col-md-8 card mb-4  mt-3 ">
+                <h3>Reviews:</h3>
+                <div class="card-body">
+                    {% for review in reviews %}
+                    <div class="review">
+                        <h5>{{ review.author.username }}</h5>
+                        <p id="review{{ review.id }}">{{ review.body }}</p>
+                        <p>Rating: {{ review.rating }}/5</p>
+                        {% if not review.approved and review.author == user %}
+                        <p class="approval">
+                            This review is awaiting approval
+                        </p>
+                        {% endif %}
+                        {% if user.is_authenticated and review.author == user %}
+                        <button class="btn btn-delete" data-review_id="{{ review.id }}">Delete</button>
+                        <button class="btn btn-edit" data-review_id="{{ review.id }}">Edit</button>
+                        {% endif %}
                     </div>
-                    {% endfor %}
                 </div>
+                {% endfor %}
             </div>
         </div>
     </div>
-</div>
-</div>
-</div>
+</div> 
 
 <!-- Delete confirmation modal -->
 <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
