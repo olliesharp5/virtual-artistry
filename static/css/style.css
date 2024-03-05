@@ -95,6 +95,17 @@ a {
     transform: scale(1.1);
 }
 
+/* Artist page Styles */
+
+.card-img-container {
+    height: 200px; /* Adjust as needed */
+    overflow: hidden;
+}
+
+.card-img-top {
+    height: 100%;
+    object-fit: cover;
+}
 
 
 /* Footer Styles */
