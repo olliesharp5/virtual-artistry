@@ -112,6 +112,14 @@ a {
     object-fit: cover;
 }
 
+.art-filter {
+    margin-top: 10px;
+}
+
+.form-group {
+    margin-bottom: 5px; /* adjust as needed */
+}
+
 
 /* Footer Styles */
 
