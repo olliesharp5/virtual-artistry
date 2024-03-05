@@ -121,6 +121,18 @@ a {
 }
 
 
+.letter-button {
+    border-radius: 50%;
+}
+
+.letter-container {
+    margin-top: 10px;
+}
+
+.reset-button {
+    margin-top: 10px;
+}
+
 /* Footer Styles */
 
 .text-muted {
