@@ -7,24 +7,24 @@
 }
 
 .loading-item1 {
-    transition-delay: 0.2s;
+    transition-delay: 0.1s;
 }
 
 .loading-item2 {
-    transition-delay: 0.5s;
+    transition-delay: 0.3s;
 }
 
 .loading-item3 {
-    transition-delay: 0.7s;
+    transition-delay: 0.5s;
 }
 
 .loading-item4 {
-    transition-delay: 1s;
+    transition-delay: 7s;
 }
 
 .loading-cards {
     opacity: 0;
-    transition: opacity 1s ease-in-out;
+    transition: opacity 0.5s ease-in-out;
 }
 
 body {
@@ -84,6 +84,11 @@ a {
 .card-artist {
     font-family: "Roboto", sans-serif;
     font-style: italic;
+}
+
+.py-5 {
+    padding-top: 1rem;
+    padding-bottom: 2rem;
 }
 
 .hover-effect {

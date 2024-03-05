@@ -12,12 +12,12 @@ from .filters import ArtFilter
 class ArtList(generic.ListView):
     model = Art
     template_name = "index.html"
-    paginate_by = 6
+    
 
     def get_queryset(self):
         queryset = super().get_queryset()
         self.filter = ArtFilter(self.request.GET, queryset=queryset)
-        return self.filter.qs
+        return self.filter.qs.order_by('?')
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
