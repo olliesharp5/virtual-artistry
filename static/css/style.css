@@ -74,6 +74,19 @@ a {
     background-color: rgba(85, 107, 47, 0.5);
 }
 
+.row {
+    margin: 0;
+}
+
+.filter-row {
+    padding-left: 45px;
+    padding-top: 10px;
+}
+
+.py-5 {
+    padding-top: 0 !important;
+}
+
 .card-title {
     font-family: "Roboto", sans-serif;
     font-weight: 900;
@@ -103,7 +116,8 @@ a {
 /* Artist page Styles */
 
 .card-img-container {
-    height: 200px; /* Adjust as needed */
+    height: 200px;
+    /* Adjust as needed */
     overflow: hidden;
 }
 
@@ -117,7 +131,8 @@ a {
 }
 
 .form-group {
-    margin-bottom: 5px; /* adjust as needed */
+    margin-bottom: 5px;
+    /* adjust as needed */
 }
 
 
