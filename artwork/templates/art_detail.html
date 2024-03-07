@@ -24,7 +24,7 @@
         <div class="col-md-3 loading-item3">
             <h1 id="artwork-title">{{ art.title }}</h1>
             <br>
-            <h3 id="artist-name">{{ art.artist }}</h3>
+            <h3 id="artist-name">{{ art.artist.display_name }}</h3>
             <h4 id="location">{{ art.artist.location }}</h4>
             <br>
             <p id="price">Price: £{{ art.price }}</p>
@@ -50,7 +50,7 @@
 
                         <!-- Contact Modal body -->
                         <div class="modal-body">
-                            <h5>Email: <span id="emailToCopy">{{ artist_profile.email }}</span> <button id="copyButton"
+                            <h5>Email: <span id="emailToCopy">{{ art.artist.user.email }}</span> <button id="copyButton"
                                     class="btn btn-secondary"><i class="fa-regular fa-copy"></i></button></h5>
                             <!-- Contact Modal footer -->
                             <div class="modal-footer">
