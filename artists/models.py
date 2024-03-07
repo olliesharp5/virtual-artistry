@@ -2,14 +2,20 @@ from django.db import models
 from django.contrib.auth.models import User
 from cloudinary.models import CloudinaryField
 
-# Create your models here.
-class ArtistProfile(models.Model):
-    name = models.CharField(max_length=100)
-    slug = models.SlugField(max_length=100, unique=True)
+class UserProfile(models.Model):
+    USER_ROLES = (
+        ('RU', 'Regular User'),
+        ('AR', 'Artist'),
+        ('AD', 'Admin'),
+    )
+
+    user = models.OneToOneField(User, on_delete=models.CASCADE, default="1")
+    role = models.CharField(max_length=2, choices=USER_ROLES, default='RU')
+    display_name = models.CharField(max_length=100, null=True, blank=True, unique=True)
     location = models.TextField()
-    artist_image = CloudinaryField('artist_image', default='artist_placeholder')
+    profile_image = CloudinaryField('profile_image', default='profile_placeholder')
     about = models.TextField()
-    email = models.EmailField()
 
     def __str__(self):
-        return self.name
+        return self.user.username
+

@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth import get_user_model
 from django.core.validators import MinValueValidator, MaxValueValidator
 from cloudinary.models import CloudinaryField
-from artists.models import ArtistProfile
+from artists.models import UserProfile
 
 CONDITION = ((0, "Excellent"), (1, "Good"), (2, "Worn"))
 STATUS = ((0, "Draft"), (1, "Published"))
@@ -14,8 +14,7 @@ class Art(models.Model):
     title = models.CharField(max_length=100, unique=True)
     slug = models.SlugField(max_length=100, unique=True)
     artist = models.ForeignKey(
-        ArtistProfile, on_delete=models.CASCADE, related_name="art_posts"
-    )
+    UserProfile, on_delete=models.CASCADE, related_name="art_posts",)
     about = models.TextField()
     art_image = CloudinaryField('art_image', default='art_placeholder')
     price = models.DecimalField(max_digits=10, decimal_places=2)
@@ -32,7 +31,7 @@ class Art(models.Model):
 
 
 class Like(models.Model):
-    user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
+    user = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
     art = models.ForeignKey(Art, on_delete=models.CASCADE)
 
     class Meta:
@@ -47,7 +46,7 @@ class Review(models.Model):
         Art, on_delete=models.CASCADE, related_name="reviews"
     )
     author = models.ForeignKey(
-        User, on_delete=models.CASCADE, related_name="reviewer"
+        UserProfile, on_delete=models.CASCADE, related_name="reviewer"
     )
     body = models.TextField()
     rating = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(5)])
