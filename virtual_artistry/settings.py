@@ -56,6 +56,7 @@ INSTALLED_APPS = [
     'artwork',
     'artists',
     'help',
+    'accounts',
 ]
 
 SITE_ID = 1
