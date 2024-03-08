@@ -6,3 +6,7 @@ email address: olliesharp5@gmail.com
 Additional Users:
 Username: user1
 Password: anormaluser
+
+
+test.artist@test.com
+test

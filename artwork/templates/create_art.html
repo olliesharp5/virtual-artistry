@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<!-- create_art.html content starts here -->
+
+<div class="container h-100">
+    <div class="row h-100 justify-content-center align-items-center no-gutters loading-item3">
+        <div class="col-12 col-md-6 shadow-lg d-flex align-items-center">
+            <div class="card">
+                <div class="card-body">
+                    <h2 class="card-title">Advertise your art with us!</h2>
+                    <p class="card-text">Here at Virtual Artistry we're always looking for new collaborations with artists to grow our community</p>
+                    <p class="card-text">Complete the form below to create an advert with us and generate visibilty around your work</p>
+                    <p class="card-text">Please contact our customer service if you have any questions</p>
+                    <form method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        {{ form.as_p }}       
+                        <button class="btn btn-secondary" type="submit">Submit</button>
+                        <button class="btn btn-secondary" type="reset">Clear</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+<!-- create_art.html content ends here -->

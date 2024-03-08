@@ -5,7 +5,7 @@ from django.contrib import messages
 from django.http import HttpResponseRedirect
 from .models import Art, Review, Like
 from artists.models import UserProfile
-from .forms import ReviewForm
+from .forms import ReviewForm, ArtForm
 from .filters import ArtFilter
 
 # Create your views here.
@@ -38,6 +38,18 @@ def art_details(request, art_slug):
     return render(request, 'art_detail.html', 
         {'art': art, 'user_has_liked': user_has_liked, 'review_form': form, 'reviews': reviews, 'artist_profile': artist_profile,}
     )
+
+
+def create_advert(request):
+    if request.method == 'POST':
+        form = ArtForm(request.POST, request.FILES, user=request.user)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Your art advert has been created and is pending review by an admin.')
+            return redirect('your_redirect_view')
+    else:
+        form = ArtForm(user=request.user)
+    return render(request, 'create_art.html', {'form': form})
 
 @login_required
 def like_artwork(request, art_slug):
