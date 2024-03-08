@@ -16,6 +16,9 @@ class UserProfile(models.Model):
     profile_image = CloudinaryField('profile_image', default='profile_placeholder')
     about = models.TextField()
 
+    def is_artist(self):
+        return self.role == 'AR'
+
     def __str__(self):
         return self.user.username
 
