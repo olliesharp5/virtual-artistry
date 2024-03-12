@@ -15,6 +15,7 @@ class ArtList(generic.ListView):
 
     def get_queryset(self):
         queryset = super().get_queryset()
+        queryset = queryset.exclude(status=0)
         self.filter = ArtFilter(self.request.GET, queryset=queryset)
         return self.filter.qs.order_by('?')
 
@@ -44,9 +45,11 @@ def create_advert(request):
     if request.method == 'POST':
         form = ArtForm(request.POST, request.FILES, user=request.user)
         if form.is_valid():
-            form.save()
+            new_advert = form.save(commit=False) # don't save it immediately
+            new_advert.status = 0 # set the status to 0
+            new_advert.save() # now save it
             messages.success(request, 'Your art advert has been created and is pending review by an admin.')
-            return redirect('your_redirect_view')
+            return redirect('home')
     else:
         form = ArtForm(user=request.user)
     return render(request, 'create_art.html', {'form': form})
