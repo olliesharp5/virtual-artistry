@@ -104,3 +104,36 @@ def review_delete(request, art_slug, review_id):
 
     return HttpResponseRedirect(reverse('art_details', args=[art_slug]))
 
+
+def artwork_edit(request, art_slug):
+    """
+    view to edit artwork
+    """
+    if request.method == "POST":
+        art = get_object_or_404(Art, slug=art_slug)
+        art_form = ArtForm(data=request.POST, instance=art)
+
+        if art_form.is_valid() and art.artist == request.user.userprofile:
+            art = art_form.save(commit=False)
+            art.save()
+            messages.add_message(request, messages.SUCCESS, 'Artwork awaiting admin review!')
+        else:
+            messages.add_message(request, messages.ERROR, 'Error updating artwork!')
+    
+    return HttpResponseRedirect(reverse('art_details', args=[art_slug]))
+
+
+def artwork_delete(request, art_slug):
+    """
+    view to delete artwork
+    """
+    art = get_object_or_404(Art, slug=art_slug)
+
+    if art.artist == request.user.userprofile:
+        art.delete()
+        messages.add_message(request, messages.SUCCESS, 'Artwork deleted!')
+    else:
+        messages.add_message(request, messages.ERROR, 'You can only delete your own artwork!')
+
+    return HttpResponseRedirect(reverse('art_details', args=[art_slug]))
+
