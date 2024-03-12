@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block content %}
+
+<div class="container py-5">
+    <div class="row">
+        <div class="col-md-12">
+            <a href="{% url 'home' %}" class="btn btn-secondary mb-3 loading-item1">Back to Home</a>
+        </div>
+    </div>
+    <div class="row loading-item3">
+        <div class="col-lg-8 mx-auto">
+            <div class="card">
+                <div class="card-body text-center">
+                    {% if "placeholder" in userprofile.profile_image.url %}
+                    <img class="rounded-circle img-fluid mb-3" src="{% static 'images/nobody.jpg' %}"
+                        alt="Profile Picture" width="150">
+                    {% else %}
+                    <img src="{{ userprofile.profile_image.url }}" class="rounded-circle img-fluid mb-3"
+                        alt="Profile Picture" width="150">
+                    {% endif %}
+                    <h3 class="card-title">{{userprofile.display_name}}</h3>
+                    <h4 class="card-subtitle mb-3 text-muted">{{userprofile.location}}</h4>
+                    <p class="card-text">{{userprofile.about}}</p>
+                    <p class="card-text">Role: {{userprofile.get_role_display}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% endblock content %}
