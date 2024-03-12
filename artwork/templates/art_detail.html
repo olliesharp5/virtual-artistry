@@ -10,77 +10,6 @@
             <div class="col-md-12">
                 <a href="{% url 'home' %}" class="btn btn-secondary mb-3 loading-item1">Back to Artwork</a>
             </div>
-            <div class="col-md-12">
-                {% if user.is_authenticated and art.artist.user == user %}
-                <button class="btn btn-edit" data-bs-toggle="modal" data-bs-target="#editArtModal">Edit Artwork</button>
-                <button class="btn btn-delete-artwork" data-bs-toggle="modal" data-bs-target="#deleteArtModal">Delete
-                    Artwork</button>
-                {% endif %}
-            </div>
-        </div>
-    </div>
-
-    <!-- Edit Artwork Modal -->
-    <div class="modal fade" id="editArtModal" tabindex="-1" aria-labelledby="editArtModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="editArtModalLabel">Edit Artwork</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <form id="editArtForm" method="post">
-                        {% csrf_token %}
-                        <div class="mb-3">
-                            <label for="title" class="form-label">Title</label>
-                            <input type="text" class="form-control" id="title" name="title" value="{{ art.title }}">
-                        </div>
-                        <div class="mb-3">
-                            <label for="about" class="form-label">About</label>
-                            <textarea class="form-control" id="about" name="about">{{ art.about }}</textarea>
-                        </div>
-                        <div class="mb-3">
-                            <label for="price" class="form-label">Price</label>
-                            <input type="text" class="form-control" id="price" name="price" value="{{ art.price }}">
-                        </div>
-                        <div class="mb-3">
-                            <label for="year" class="form-label">Year</label>
-                            <input type="text" class="form-control" id="year" name="year" value="{{ art.year }}">
-                        </div>
-                        <div class="mb-3">
-                            <label for="condition" class="form-label">Condition</label>
-                            <select class="form-control" id="condition" name="condition">
-                                <option value="0" {% if art.condition == 0 %}selected{% endif %}>New</option>
-                                <option value="1" {% if art.condition == 1 %}selected{% endif %}>Used</option>
-                            </select>
-                        </div>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="submit" form="editArtForm" class="btn btn-primary">Save changes</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Delete artwork confirmation modal -->
-    <div class="modal fade" id="deleteArtModal" tabindex="-1" aria-labelledby="deleteArtModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="deleteArtModalLabel">Delete artwork?</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    Are you sure you want to delete your artwork?
-                    This action cannot be undone.
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <a id="deleteArtConfirm" href="#" class="btn btn-danger">Delete</a>
-                </div>
-            </div>
         </div>
     </div>
 
@@ -104,6 +33,7 @@
             <br>
             <p id="about-artwork">{{ art.about }}</p>
             {% if user.is_authenticated %}
+            {% if art.artist.user != user %}
             <!-- Button to trigger contact modal -->
             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#contactModal">Contact
                 Seller</button>
@@ -130,7 +60,6 @@
                     </div>
                 </div>
             </div>
-            <p>{{ art.like_set.count }} likes</p>
             <form action="{% url 'like_artwork' art.slug %}" method="post">
                 {% csrf_token %}
                 <button class="btn btn-secondary" type="submit">{{ user_has_liked|yesno:"Unlike,Like" }}</button>
@@ -139,6 +68,12 @@
             <!-- Button to trigger review modal -->
             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#reviewModal">Review
                 Artwork</button>
+            {% else %}
+            <!-- Display edit and delete buttons for the artist -->
+            <button class="btn btn-edit" data-bs-toggle="modal" data-bs-target="#editArtModal">Edit Artwork</button>
+            <button class="btn btn-delete-artwork" data-bs-toggle="modal" data-bs-target="#deleteArtModal">Delete
+                Artwork</button>
+            {% endif %}
             {% else %}
             <p>Please log in to purchase or interact with the advert</p>
             {% endif %}
@@ -172,6 +107,9 @@
             </div>
         </div>
         <div class="row">
+            <p>{{ art.like_set.count }} likes</p>
+        </div>
+        <div class="row">
             <div class="col-md-8 card mb-4  mt-3 ">
                 <h3>Reviews:</h3>
                 <div class="card-body">
@@ -186,12 +124,77 @@
                         </p>
                         {% endif %}
                         {% if user.is_authenticated and review.author.user == user %}
-                        <button class="btn btn-delete-review" data-review_id="{{ review.id }}" data-bs-target="#deleteModal">Delete</button>
+                        <button class="btn btn-delete-review" data-review_id="{{ review.id }}"
+                            data-bs-target="#deleteModal">Delete</button>
                         <button class="btn btn-edit" data-review_id="{{ review.id }}">Edit</button>
                         {% endif %}
                     </div>
                 </div>
                 {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Edit Artwork Modal -->
+<div class="modal fade" id="editArtModal" tabindex="-1" aria-labelledby="editArtModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editArtModalLabel">Edit Artwork</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="editArtForm" method="post">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label for="title" class="form-label">Title</label>
+                        <input type="text" class="form-control" id="title" name="title" value="{{ art.title }}">
+                    </div>
+                    <div class="mb-3">
+                        <label for="about" class="form-label">About</label>
+                        <textarea class="form-control" id="about" name="about">{{ art.about }}</textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label for="price" class="form-label">Price</label>
+                        <input type="text" class="form-control" id="price" name="price" value="{{ art.price }}">
+                    </div>
+                    <div class="mb-3">
+                        <label for="year" class="form-label">Year</label>
+                        <input type="text" class="form-control" id="year" name="year" value="{{ art.year }}">
+                    </div>
+                    <div class="mb-3">
+                        <label for="condition" class="form-label">Condition</label>
+                        <select class="form-control" id="condition" name="condition">
+                            <option value="0" {% if art.condition == 0 %}selected{% endif %}>New</option>
+                            <option value="1" {% if art.condition == 1 %}selected{% endif %}>Used</option>
+                        </select>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="submit" form="editArtForm" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Delete artwork confirmation modal -->
+<div class="modal fade" id="deleteArtModal" tabindex="-1" aria-labelledby="deleteArtModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deleteArtModalLabel">Delete artwork?</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Are you sure you want to delete your artwork?
+                This action cannot be undone.
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <a id="deleteArtConfirm" href="#" class="btn btn-danger">Delete</a>
             </div>
         </div>
     </div>
@@ -212,7 +215,7 @@
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                 <a id="deleteConfirm" href="#" class="btn
-            btn-danger">Delete</a>
+                    btn-danger">Delete</a>
             </div>
         </div>
     </div>
