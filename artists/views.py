@@ -19,5 +19,5 @@ class ArtistList(FilterView):
 def artist_profile(request, username):
     user = get_object_or_404(User, username=username)
     artistprofile = UserProfile.objects.get(user=user)
-    artworks = Art.objects.filter(artist=artistprofile)
+    artworks = Art.objects.filter(artist=artistprofile).exclude(status=0)
     return render(request, 'artist_profile.html', {'artistprofile': artistprofile, 'object_list': artworks})
