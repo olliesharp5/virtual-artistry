@@ -1,3 +1,4 @@
+import datetime
 from django.db import models
 from django.contrib.auth.models import User
 from django.contrib.auth import get_user_model
@@ -18,7 +19,7 @@ class Art(models.Model):
     about = models.TextField()
     art_image = CloudinaryField('art_image', default='art_placeholder')
     price = models.DecimalField(max_digits=10, decimal_places=2)
-    year = models.DateField()
+    year = models.PositiveIntegerField(validators=[MinValueValidator(1600), MaxValueValidator(datetime.date.today().year)], default=datetime.date.today().year)
     condition = models.IntegerField(choices=CONDITION, default=0)
     created_on = models.DateTimeField(auto_now_add=True)
     status = models.IntegerField(choices=STATUS, default=0)
