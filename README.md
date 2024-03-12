@@ -213,6 +213,8 @@ The performance of the website was tested with [Google Lighthouse](INSERT LINK T
 
 ### Content
 * The idea for the offcanvas backdrop to house the filter properties was taken from https://getbootstrap.com/docs/5.0/components/offcanvas/
+* implementation of masonry layout: https://masonry.desandro.com/
+
 
 ### Media
 

@@ -145,7 +145,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form id="editArtForm" method="post">
+                <form id="editArtForm" method="post" action="{% url 'art_edit' art.slug %}">
                     {% csrf_token %}
                     <div class="mb-3">
                         <label for="title" class="form-label">Title</label>
@@ -192,10 +192,13 @@
                 Are you sure you want to delete your artwork?
                 This action cannot be undone.
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <a id="deleteArtConfirm" href="#" class="btn btn-danger">Delete</a>
-            </div>
+            <form id="deleteArtForm" method="post" action="{% url 'art_delete' art.slug %}">
+                {% csrf_token %}
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                </div>
+            </form>
         </div>
     </div>
 </div>

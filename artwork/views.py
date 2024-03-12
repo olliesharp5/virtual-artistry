@@ -111,12 +111,14 @@ def artwork_edit(request, art_slug):
     """
     if request.method == "POST":
         art = get_object_or_404(Art, slug=art_slug)
-        art_form = ArtForm(data=request.POST, instance=art)
+        art_form = ArtForm(data=request.POST, instance=art, user=request.user)  # pass the user here
 
         if art_form.is_valid() and art.artist == request.user.userprofile:
             art = art_form.save(commit=False)
+            art.status = 0  # setting status to 0: draft
             art.save()
             messages.add_message(request, messages.SUCCESS, 'Artwork awaiting admin review!')
+            return redirect('home')  # redirect to 'home' URL
         else:
             messages.add_message(request, messages.ERROR, 'Error updating artwork!')
     
