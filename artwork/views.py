@@ -134,8 +134,8 @@ def artwork_delete(request, art_slug):
     if art.artist == request.user.userprofile:
         art.delete()
         messages.add_message(request, messages.SUCCESS, 'Artwork deleted!')
+        return redirect('home')  # redirect to 'home' URL
     else:
         messages.add_message(request, messages.ERROR, 'You can only delete your own artwork!')
-
-    return HttpResponseRedirect(reverse('art_details', args=[art_slug]))
+        return HttpResponseRedirect(reverse('art_details', args=[art_slug]))  # redirect to art details page if the user is not the artist
 
