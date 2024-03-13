@@ -113,6 +113,17 @@ a {
     transform: scale(1.1);
 }
 
+.image-container {
+    display: flex; /* Makes the container a flex container */
+    justify-content: flex-end; /* Aligns the image to the right */
+    width: 60%; 
+}
+
+.art-image {
+    max-height: 800px;
+    object-fit: contain;
+}
+
 .reviews {
     border-color: #5e3c58;
     border-width: 4px;
@@ -217,5 +228,9 @@ a {
 
     .nav-item {
         padding-left: 3px;
+    }
+
+    .image-container {
+        width: 80%; 
     }
 }

@@ -14,11 +14,11 @@
     </div>
 
     <div class="row loading-item2">
-        <div class="col-md-9">
+        <div class="col-9 col-md-9 image-container">
             {% if not art.art_image or "placeholder" in art.art_image.url %}
-            <img class="img-fluid" src="{% static 'images/placeholder_image.png' %}" alt="{{ art.title }}">
+            <img class="img-fluid art-image" src="{% static 'images/placeholder_image.png' %}" alt="{{ art.title }}">
             {% else %}
-            <img class="img-fluid" src=" {{ art.art_image.url }}" alt="{{ art.title }}">
+            <img class="img-fluid art-image" src=" {{ art.art_image.url }}" alt="{{ art.title }}">
             {% endif %}
         </div>
         <div class="col-md-3 loading-item3">
