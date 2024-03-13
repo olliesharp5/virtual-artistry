@@ -113,10 +113,15 @@ a {
     transform: scale(1.1);
 }
 
+.advert-container {
+}
+
 .image-container {
-    display: flex; /* Makes the container a flex container */
-    justify-content: flex-end; /* Aligns the image to the right */
-    width: 60%; 
+    display: flex;
+    /* Makes the container a flex container */
+    justify-content: flex-end;
+    /* Aligns the image to the right */
+    width: 60%;
 }
 
 .art-image {
@@ -179,7 +184,8 @@ a {
 }
 
 .artwork-title {
-    background-color: rgba(0, 0, 0, 0.6); /* black with 60% opacity */
+    background-color: rgba(0, 0, 0, 0.6);
+    /* black with 60% opacity */
     opacity: 0;
     transition: opacity 0.5s ease;
     top: 0;
@@ -197,7 +203,9 @@ a {
     color: #5e3c58 !important;
 }
 
-.btn-primary {
+.btn-primary,
+.btn-delete-artwork,
+.btn-edit {
     color: antiquewhite;
     background-color: #5e3c58;
     border-color: #5e3c58;
@@ -231,6 +239,6 @@ a {
     }
 
     .image-container {
-        width: 80%; 
+        width: 80%;
     }
 }
