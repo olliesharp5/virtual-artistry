@@ -4,7 +4,7 @@ const reviewForm = document.querySelector(".reviewform");
 const submitButton = document.getElementById("submitButton");
 
 const deleteModal = new bootstrap.Modal(document.getElementById("deleteModal"));
-const deleteButtons = document.getElementsByClassName("btn-delete");
+const deleteButtons = document.getElementsByClassName("btn-delete-review");
 const deleteConfirm = document.getElementById("deleteConfirm");
 
 // Get the modal

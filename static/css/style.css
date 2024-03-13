@@ -113,6 +113,15 @@ a {
     transform: scale(1.1);
 }
 
+.reviews {
+    border-color: antiquewhite;
+    border-width: 10px;
+}
+
+.review {
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
+}
+
 /* Artist page Styles */
 
 .card-img-container {

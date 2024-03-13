@@ -45,7 +45,7 @@
 
                         <!-- Contact Modal Header -->
                         <div class="modal-header">
-                            <h4 class="modal-title">Contact {{ art.artist }}</h4>
+                            <h4 class="modal-title">Contact {{ art.artist.display_name }}</h4>
                             <button type="button" class="close" data-bs-dismiss="modal">&times;</button>
                         </div>
 
@@ -110,12 +110,12 @@
             <p>{{ art.like_set.count }} likes</p>
         </div>
         <div class="row">
-            <div class="col-md-8 card mb-4  mt-3 ">
+            <div class="col-md-8 card mb-4  mt-3 reviews">
                 <h3>Reviews:</h3>
                 <div class="card-body">
                     {% for review in reviews %}
-                    <div class="review">
-                        <h5>{{ review.author.username }}</h5>
+                    <div class="card-body review">
+                        <h5>By: {{ review.author.user.username }}</h5>
                         <p id="review{{ review.id }}">{{ review.body }}</p>
                         <p>Rating: {{ review.rating }}/5</p>
                         {% if not review.approved and review.author == user %}
@@ -208,11 +208,11 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="deleteModalLabel">Delete comment?</h5>
+                <h5 class="modal-title" id="deleteModalLabel">Delete review?</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                Are you sure you want to delete your comment?
+                Are you sure you want to delete your review?
                 This action cannot be undone.
             </div>
             <div class="modal-footer">

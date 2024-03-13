@@ -65,6 +65,18 @@ def like_artwork(request, art_slug):
     return redirect('art_details', art_slug=artwork.slug)
 
 
+def review(request):
+    if request.method == 'POST':
+        form = ReviewForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Your review has been sent for admin approval')
+            return redirect('art_details', art_slug=artwork.slug)
+    else:
+        form = ReviewForm()
+    return render(request, 'art_detail.html', {'form': form})
+
+
 def review_edit(request, art_slug, review_id):
     """
     view to edit reviews
