@@ -24,7 +24,11 @@
         <div class="col-md-3 loading-item3">
             <h1 id="artwork-title">{{ art.title }}</h1>
             <br>
-            <h3 id="artist-name">{{ art.artist.display_name }}</h3>
+            <h3 id="artist-name">
+                <a href="{% url 'artist_profile' art.artist.user.username %}">
+                    {{ art.artist.display_name }}
+                </a>
+            </h3>
             <h4 id="location">{{ art.artist.location }}</h4>
             <br>
             <p id="price">Price: £{{ art.price }}</p>

@@ -114,8 +114,8 @@ a {
 }
 
 .reviews {
-    border-color: antiquewhite;
-    border-width: 10px;
+    border-color: #5e3c58;
+    border-width: 4px;
 }
 
 .review {
@@ -160,6 +160,24 @@ a {
     margin-top: 10px;
     margin-bottom: 10px;
     border-radius: 50%;
+}
+
+.artwork {
+    position: relative;
+    cursor: pointer;
+}
+
+.artwork-title {
+    background-color: rgba(0, 0, 0, 0.6); /* black with 60% opacity */
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+.artwork:hover .artwork-title {
+    opacity: 1;
 }
 
 /* Footer Styles */
