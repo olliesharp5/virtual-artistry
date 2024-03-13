@@ -8,6 +8,9 @@
   <div class="d-flex justify-content-center align-items-center space-between letter-container">
     {% for choice in filter.form.fields.first_letter.choices %}
       <a class="btn btn-primary ml-2 letter-button" href="?first_letter={{ choice.0 }}">{{ choice.1 }}</a>
+      {% if not forloop.last %}
+        <span class="mx-2">-</span>
+      {% endif %}
     {% endfor %}
   </div>
 </div>
