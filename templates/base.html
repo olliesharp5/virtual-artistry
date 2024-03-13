@@ -53,37 +53,41 @@
                     <a class="nav-link" href="{% url 'help' %}">Help</a>
                 </li>
             </ul>
-        </div>
-        <div class="navigation-buttons d-flex ms-auto">
-            <ul class="navbar-nav">
-                {% if not user.is_authenticated %}
-                <li class="nav-item">
-                    <a class="nav-link {% if request.path == signup_url %}active{% endif %}" aria-current="page"
-                        href="{% url 'account_signup' %}">Register</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link {% if request.path == login_url %}active{% endif %}" aria-current="page"
-                        href="{% url 'account_login' %}">Login</a>
-                </li>
-                {% else %}
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'profile' %}"><i class="fa-solid fa-user"></i></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link {% if request.path == logout_url %}active{% endif %}" aria-current="page"
-                        href="{% url 'account_logout' %}">Logout</a>
-                </li>
-                {% endif %}
-            </ul>
-        </div>
-        <div class="auth-text">
-            <span class="navbar-text text-muted">
-                {% if user.is_authenticated %}
-                You are logged in as {{ user }}
-                {% else %}
-                You are not logged in
-                {% endif %}
-            </span>
+            <div class="navigation-buttons d-flex ms-auto">
+                <ul class="navbar-nav">
+                    {% if not user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link {% if request.path == signup_url %}active{% endif %}" aria-current="page"
+                            href="{% url 'account_signup' %}">Register</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {% if request.path == login_url %}active{% endif %}" aria-current="page"
+                            href="{% url 'account_login' %}">Login</a>
+                    </li>
+                    {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link d-lg-none" href="{% url 'profile' %}">Profile</a>
+                        <!-- This will be visible on screens smaller than lg -->
+                        <a class="nav-link d-none d-lg-block" href="{% url 'profile' %}"><i
+                                class="fa-solid fa-user"></i></a>
+                        <!-- This will be visible on screens larger than lg -->
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {% if request.path == logout_url %}active{% endif %}" aria-current="page"
+                            href="{% url 'account_logout' %}">Logout</a>
+                    </li>
+                    {% endif %}
+                </ul>
+            </div>
+            <div class="auth-text">
+                <span class="navbar-text text-muted">
+                    {% if user.is_authenticated %}
+                    You are logged in as {{ user }}
+                    {% else %}
+                    You are not logged in
+                    {% endif %}
+                </span>
+            </div>
         </div>
     </nav>
 
