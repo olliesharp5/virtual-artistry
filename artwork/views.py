@@ -10,6 +10,27 @@ from .filters import ArtFilter
 
 # Create your views here.
 class ArtList(generic.ListView):
+    """
+    Returns a random list of Art objects from :model:`art.Art` (excluding those with status 0), 
+    which can be further filtered using `ArtFilter`. 
+
+    **Context**
+
+    ``filter``
+    An instance of `ArtFilter` to enable filtering on the queryset.
+
+    **Methods**
+
+    ``get_queryset()``
+    Returns a random queryset of Art objects, excluding those with status 0 and applies `ArtFilter`.
+
+    ``get_context_data(**kwargs)``
+    Adds `filter` to template context.
+
+    **Template:**
+
+    :template:`index.html`
+    """
     model = Art
     template_name = "index.html"
 
@@ -26,6 +47,34 @@ class ArtList(generic.ListView):
 
 
 def art_details(request, art_slug):
+    """
+    Displays the detail view of a specific Art object along with its associated reviews 
+    from :model:`art.Review`, and allows users to add new reviews if authenticated.
+
+    **Arguments:**
+
+    ``request``
+    The HTTP request. 
+    ``art_slug``
+    Slug of the Art object.
+
+    **Context**
+
+    ``art``
+    Instance of the Art object.
+    ``user_has_liked``
+    Boolean flag indicating if the current user has liked the art.
+    ``review_form``
+    A form instance for posting a new review.
+    ``reviews``
+    List of approved Review objects linked to the Art object.
+    ``artist_profile``
+    The profile of the artist who created the Art.
+
+    **Template:**
+
+    :template:`art_detail.html`
+    """
     art = get_object_or_404(Art, slug=art_slug)
     user_has_liked = Like.objects.filter(user=request.user.userprofile, art=art).exists() if request.user.is_authenticated else False
     artist_profile = art.artist
@@ -42,6 +91,27 @@ def art_details(request, art_slug):
 
 
 def create_advert(request):
+    """
+    Handles the creation of a new art advert from the :model:`art.Art`. 
+
+    **Arguments:**
+
+    ``request``
+    The HTTP request.
+
+    **POST:**
+
+    Art information is validated and if valid, a new Art instance is created with status set to 0. 
+    The user is redirected to the home page.
+
+    **GET:**
+
+    An empty ArtForm is displayed.
+
+    **Template:**
+
+    :template:`create_art.html`
+    """
     if request.method == 'POST':
         form = ArtForm(request.POST, request.FILES, user=request.user)
         if form.is_valid():
@@ -56,6 +126,19 @@ def create_advert(request):
 
 @login_required
 def like_artwork(request, art_slug):
+    """
+    Handles the request of a user liking or un-liking an Art object from the :model:`art.Art`.
+
+    **Arguments:**
+
+    ``request``
+    The HTTP request. 
+    ``art_slug``
+    Slug of the Art object.
+
+    After liking or unliking an artwork, redirects to the details of the Art object. 
+    Only authenticated users can access this view.
+    """
     artwork = get_object_or_404(Art, slug=art_slug)
     like = Like.objects.filter(user=request.user.userprofile, art=artwork)
     if like.exists():
@@ -66,6 +149,27 @@ def like_artwork(request, art_slug):
 
 
 def review(request):
+    """
+    Handles the creation of a new Review for an Art object from the :model:`art.Review`.
+
+    **Arguments:**
+
+    ``request``
+    The HTTP request.
+
+    **POST:**
+
+    Review information is validated and if valid, a new Review instance is created and saved. 
+    The user is redirected to the Art details.
+
+    **GET:**
+
+    An empty ReviewForm is displayed.
+
+    **Template:**
+
+    :template:`art_detail.html`
+    """
     if request.method == 'POST':
         form = ReviewForm(request.POST)
         if form.is_valid():
@@ -79,7 +183,18 @@ def review(request):
 
 def review_edit(request, art_slug, review_id):
     """
-    view to edit reviews
+    Handles the editing of an existing review associated with an Art object from the :model:`art.Review`.
+
+    **Arguments:**
+
+    ``request``
+    The HTTP request. 
+    ``art_slug``
+    Slug of the Art object. 
+    ``review_id``
+    ID of the Review object.
+
+    After successfully editing a review, redirects to the details of the Art object.
     """
     if request.method == "POST":
 
@@ -101,8 +216,19 @@ def review_edit(request, art_slug, review_id):
 
 
 def review_delete(request, art_slug, review_id):
-    """
-    view to delete reviews
+   """
+    Handles the deletion of an existing review associated with an Art object from the :model:`art.Review`.
+
+    **Arguments:**
+
+    ``request``
+    The HTTP request. 
+    ``art_slug``
+    Slug of the Art object. 
+    ``review_id``
+    ID of the Review object.
+
+    After successfully deleting a review, redirects to the details of the Art object.
     """
     queryset = Review.objects.filter(approved=True)
     product = get_object_or_404(Art, slug=art_slug)
@@ -119,7 +245,16 @@ def review_delete(request, art_slug, review_id):
 
 def artwork_edit(request, art_slug):
     """
-    view to edit artwork
+    Handles the editing of an existing Art object from the :model:`art.Art`.
+
+    **Arguments:**
+
+    ``request``
+    The HTTP request. 
+    ``art_slug``
+    Slug of the Art object. 
+
+    After successfully editing an artwork, the artwork's status is set to 0 (draft) and it is saved. The user is then redirected to the 'home' URL.
     """
     if request.method == "POST":
         art = get_object_or_404(Art, slug=art_slug)
@@ -139,7 +274,16 @@ def artwork_edit(request, art_slug):
 
 def artwork_delete(request, art_slug):
     """
-    view to delete artwork
+    Handles the deletion of an existing Art object from the :model:`art.Art`.
+
+    **Arguments:**
+
+    ``request``
+    The HTTP request. 
+    ``art_slug``
+    Slug of the Art object. 
+
+    After successfully deleting an artwork, the user is redirected to the 'home' URL. If the authenticated user is not the creator of the artwork, it redirects to the artwork details page.
     """
     art = get_object_or_404(Art, slug=art_slug)
 

@@ -3,6 +3,22 @@ from django.contrib.auth.models import User
 from cloudinary.models import CloudinaryField
 
 class UserProfile(models.Model):
+    """
+    This is a UserProfile model that represents an extended user profile.
+
+    Attributes:
+    USER_ROLES (tuple): A tuple constant that defines the possible roles ('RU', 'Regular User'), ('AR', 'Artist'), and ('AD', 'Admin') that a user can have in the system.
+    user (OneToOneField): A one-to-one relationship with the User model; on user deletion, the associated profile will also be deleted.
+    role (CharField): The role of the user within the application. Choices are defined in the USER_ROLES constant, with 'Regular User' as default.
+    display_name (CharField): The displayed name for the user in the system. It can be null and unique with a maximum of 100 characters.
+    location (TextField): The recorded location for the user.
+    profile_image (CloudinaryField): The profile image of the user, with a default placeholder when no image is provided.
+    about (TextField): A text describing about the user.
+
+    Methods:
+    is_artist(): Checks if the user is an artist, returns True if the user's role is 'Artist', otherwise returns False.
+    __str__(): Returns a readable string representation of the UserProfile object, indicating the username of the user.
+    """
     USER_ROLES = (
         ('RU', 'Regular User'),
         ('AR', 'Artist'),
