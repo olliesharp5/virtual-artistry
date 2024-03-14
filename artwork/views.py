@@ -216,20 +216,20 @@ def review_edit(request, art_slug, review_id):
 
 
 def review_delete(request, art_slug, review_id):
-   """
-    Handles the deletion of an existing review associated with an Art object from the :model:`art.Review`.
-
-    **Arguments:**
-
-    ``request``
-    The HTTP request. 
-    ``art_slug``
-    Slug of the Art object. 
-    ``review_id``
-    ID of the Review object.
-
-    After successfully deleting a review, redirects to the details of the Art object.
     """
+        Handles the deletion of an existing review associated with an Art object from the :model:`art.Review`.
+
+        **Arguments:**
+
+        ``request``
+        The HTTP request. 
+        ``art_slug``
+        Slug of the Art object. 
+        ``review_id``
+        ID of the Review object.
+
+        After successfully deleting a review, redirects to the details of the Art object.
+        """
     queryset = Review.objects.filter(approved=True)
     product = get_object_or_404(Art, slug=art_slug)
     review = get_object_or_404(Review, pk=review_id)
