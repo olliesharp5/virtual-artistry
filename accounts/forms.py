@@ -13,3 +13,7 @@ class UserProfileForm(forms.ModelForm):
     class Meta:
         model = UserProfile
         fields = ['role', 'display_name', 'location', 'profile_image', 'about']
+
+class UpdateProfileForm(UserProfileForm):
+    class Meta(UserProfileForm.Meta):
+        fields = ['display_name', 'location', 'profile_image', 'about']

@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .forms import UserForm, UserProfileForm
+from .forms import UserForm, UserProfileForm, UpdateProfileForm
 from artists.models import UserProfile
 
 # Create your views here.
@@ -62,3 +62,16 @@ def profile(request):
     user_profile = UserProfile.objects.get(user=request.user)
     context = {'userprofile': user_profile}
     return render(request, 'accounts/profile.html', context)
+
+
+def update_profile(request):
+    print(request.user)  # Print the current user
+    print(request.user.userprofile)  # Print the userprofile associated with the current user
+    if request.method == 'POST':
+        form = UpdateProfileForm(request.POST, request.FILES, instance=request.user.userprofile)
+        if form.is_valid():
+            form.save()
+            return redirect('profile')
+    else:
+        form = UpdateProfileForm(instance=request.user.userprofile)
+    return render(request, 'accounts/update_profile.html', {'form': form})
