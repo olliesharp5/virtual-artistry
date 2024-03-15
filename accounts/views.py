@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect
 from .forms import UserForm, UserProfileForm, UpdateProfileForm
 from artists.models import UserProfile
+from artwork.models import Art
+
 
 # Create your views here.
 
@@ -60,7 +62,13 @@ def profile(request):
     :template:`accounts/profile.html`
     """
     user_profile = UserProfile.objects.get(user=request.user)
-    context = {'userprofile': user_profile}
+    user = request.user
+    artistprofile = UserProfile.objects.get(user=user)
+    pending_artworks = Art.objects.filter(artist=artistprofile).exclude(status=1)
+    context = {
+        'userprofile': user_profile,
+        'draft_object_list': pending_artworks
+    }
     return render(request, 'accounts/profile.html', context)
 
 

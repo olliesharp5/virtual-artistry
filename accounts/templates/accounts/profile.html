@@ -10,11 +10,13 @@
             <a href="{% url 'home' %}" class="btn btn-secondary mb-3 loading-item1">Back to Home</a>
         </div>
     </div>
-    <div class="row loading-item3">
+    <div class="row loading-item2">
         <div class="col-lg-8 mx-auto">
             <div class="card">
-                <div class="d-flex justify-content-end">
-                    <a href="{% url 'update_profile' %}" class="btn btn-primary"><i class="fa-solid fa-pen-to-square"></i></a>
+                <div class="d-flex justify-content-between align-items-center">
+                    <h4 class="card-text">Role: {{userprofile.get_role_display}}</h4>
+                    <a href="{% url 'update_profile' %}" class="btn btn-primary"><i
+                            class="fa-solid fa-pen-to-square"></i></a>
                 </div>
                 <div class="card-body text-center">
                     {% if "placeholder" in userprofile.profile_image.url %}
@@ -27,10 +29,35 @@
                     <h3 class="card-title">{{userprofile.display_name}}</h3>
                     <h4 class="card-subtitle mb-3 text-muted">{{userprofile.location}}</h4>
                     <p class="card-text">{{userprofile.about}}</p>
-                    <p class="card-text">Role: {{userprofile.get_role_display}}</p>
                 </div>
             </div>
         </div>
     </div>
+
+    <div class="row loading-item2">
+        <div class="album py-5 bg-body-tertiary">
+            <div class="container">
+                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                    {% for art in draft_object_list %}
+                    <div class="col">
+                        <div class="card shadow-sm artwork">
+                            <div class="card-img-container position-relative overflow-hidden">
+                                {% if not art.art_image or "placeholder" in art.art_image.url %}
+                                <img class="card-img-top" src="{% static 'images/placeholder_image.png' %}"
+                                    alt="{{ art.title }}">
+                                {% else %}
+                                <img class="card-img-top" src=" {{ art.art_image.url }}" alt="{{ art.title }}">
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                    {% empty %}
+                    <p class="text-center">No artworks found</p>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+
 </div>
 {% endblock content %}
