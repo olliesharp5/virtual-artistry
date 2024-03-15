@@ -1,10 +1,22 @@
 {% extends 'base.html' %}
 
 {% block content %}
-  <h2>Update Profile</h2>
-  <form method="post" action="{% url 'update_profile' %}" enctype="multipart/form-data">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Update</button>
-  </form>
+
+<div class="container h-100">
+    <div class="row h-100 justify-content-center align-items-center">
+        <div class="col-6">
+            <div class="card shadow-lg">
+                <div class="card-body">
+                    <h1 class="card-title">Update Profile</h1>
+                    <form method="post" action="{% url 'update_profile' %}" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                        <button class="btn btn-primary" type="submit">Update</button>
+                        <a href="{% url 'profile' %}" class="btn btn-primary">Back to Profile</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}

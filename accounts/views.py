@@ -65,8 +65,6 @@ def profile(request):
 
 
 def update_profile(request):
-    print(request.user)  # Print the current user
-    print(request.user.userprofile)  # Print the userprofile associated with the current user
     if request.method == 'POST':
         form = UpdateProfileForm(request.POST, request.FILES, instance=request.user.userprofile)
         if form.is_valid():
