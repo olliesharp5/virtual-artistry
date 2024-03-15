@@ -5,12 +5,12 @@
 {% block content %}
 
 <div class="container py-5">
-    <div class="row">
+    <div class="row mb-5">
         <div class="col-md-12">
             <a href="{% url 'home' %}" class="btn btn-secondary mb-3 loading-item1">Back to Home</a>
         </div>
-    </div>
-    <div class="row loading-item2">
+
+        <!-- User Profile Card -->
         <div class="col-lg-8 mx-auto">
             <div class="card">
                 <div class="d-flex justify-content-between align-items-center">
@@ -32,32 +32,54 @@
                 </div>
             </div>
         </div>
-    </div>
 
-    <div class="row loading-item2">
-        <div class="album py-5 bg-body-tertiary">
-            <div class="container">
-                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-                    {% for art in draft_object_list %}
-                    <div class="col">
-                        <div class="card shadow-sm artwork">
-                            <div class="card-img-container position-relative overflow-hidden">
-                                {% if not art.art_image or "placeholder" in art.art_image.url %}
-                                <img class="card-img-top" src="{% static 'images/placeholder_image.png' %}"
-                                    alt="{{ art.title }}">
-                                {% else %}
-                                <img class="card-img-top" src=" {{ art.art_image.url }}" alt="{{ art.title }}">
-                                {% endif %}
+        <!-- Pending Artworks Card -->
+        <div class="col-lg-8 mx-auto mt-3">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="mb-0">Artworks pending approval</h4>
+                </div>
+                <div class="card-body">
+                    <div class="album py-5">
+                        <div class="container">
+                            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                                {% for art in draft_object_list %}
+                                <div class="col">
+                                    <div class="card shadow-sm artwork">
+                                        <div class="card-img-container position-relative overflow-hidden">
+                                            {% if not art.art_image or "placeholder" in art.art_image.url %}
+                                            <img class="card-img-top" src="{% static 'images/placeholder_image.png' %}"
+                                                alt="{{ art.title }}">
+                                            {% else %}
+                                            <img class="card-img-top" src=" {{ art.art_image.url }}"
+                                                alt="{{ art.title }}">
+                                            {% endif %}
+                                        </div>
+                                        <div
+                                            class="artwork-title position-absolute w-100 h-100 d-flex flex-column align-items-center justify-content-center">
+                                            <p class="text-white mb-4">{{ art.title }}</p>
+                                            <div class="d-flex">
+                                                <button class="btn btn-edit" data-bs-toggle="modal"
+                                                    data-bs-target="#editArtModal">
+                                                    <i class="fa-solid fa-pen-to-square"></i>
+                                                </button>
+                                                <button class="btn btn-delete-artwork" data-bs-toggle="modal"
+                                                    data-bs-target="#deleteArtModal">
+                                                    <i class="fa-solid fa-trash"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {% empty %}
+                                <h3 class="text-center">You have no artwork pending review!</h3>
+                                {% endfor %}
                             </div>
                         </div>
                     </div>
-                    {% empty %}
-                    <p class="text-center">No artworks found</p>
-                    {% endfor %}
                 </div>
             </div>
         </div>
     </div>
-
 </div>
 {% endblock content %}

@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from .forms import UserForm, UserProfileForm, UpdateProfileForm
 from artists.models import UserProfile
 from artwork.models import Art
+from artwork.views import artwork_edit, artwork_delete
 
 
 # Create your views here.
