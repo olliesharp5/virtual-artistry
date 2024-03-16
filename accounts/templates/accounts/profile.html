@@ -56,9 +56,22 @@
                                             {% endif %}
                                         </div>
                                         <div
-                                            class="artwork-title position-absolute w-100 h-100 d-flex flex-column align-items-center justify-content-center">
+                                            class="artwork-title position-absolute w-100 h-100 d-flex flex-column align-items-center justify-content-center d-none d-lg-flex">
                                             <p class="text-white mb-4">{{ art.title }}</p>
                                             <div class="d-flex">
+                                                <button class="btn btn-edit" data-bs-toggle="modal"
+                                                    data-bs-target="#editArtModal-{{ art.slug }}">
+                                                    <i class="fa-solid fa-pen-to-square"></i>
+                                                </button>
+                                                <button class="btn btn-delete-artwork" data-bs-toggle="modal"
+                                                    data-bs-target="#deleteArtModal-{{ art.slug }}">
+                                                    <i class="fa-solid fa-trash"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div class="card-body d-block d-lg-none">
+                                            <h5 class="card-title">{{ art.title }}</h5>
+                                            <div class="d-flex justify-content-between">
                                                 <button class="btn btn-edit" data-bs-toggle="modal"
                                                     data-bs-target="#editArtModal-{{ art.slug }}">
                                                     <i class="fa-solid fa-pen-to-square"></i>
@@ -72,13 +85,14 @@
                                     </div>
                                 </div>
 
+
                                 <!-- Edit Draft Artwork Modal -->
                                 <div class="modal fade" id="editArtModal-{{ art.slug }}" tabindex="-1"
                                     aria-labelledby="editArtModalLabel" aria-hidden="true">
                                     <div class="modal-dialog">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <h5 class="modal-title" id="editArtModalLabel">Edit Artwork</h5>
+                                                <h5 class="modal-title" id="editArtModalLabel">Edit Draft Artwork</h5>
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                     aria-label="Close"></button>
                                             </div>
@@ -135,12 +149,12 @@
                                     <div class="modal-dialog">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <h5 class="modal-title" id="deleteArtModalLabel">Delete artwork?</h5>
+                                                <h5 class="modal-title" id="deleteArtModalLabel">Delete draft?</h5>
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                     aria-label="Close"></button>
                                             </div>
                                             <div class="modal-body">
-                                                Are you sure you want to delete your artwork?
+                                                Are you sure you want to delete your draft?
                                                 This action cannot be undone.
                                             </div>
                                             <form id="deleteArtForm" method="post"
