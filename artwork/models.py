@@ -73,8 +73,7 @@ class Like(models.Model):
         unique_together = ('user', 'art')
 
     def __str__(self):
-        return f"{self.user.username} likes {self.art.title}"
-
+        return f"{self.user.user.username} likes {self.art.title}"
 
 class Review(models.Model):
     """
