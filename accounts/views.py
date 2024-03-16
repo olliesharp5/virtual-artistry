@@ -1,8 +1,8 @@
 from django.shortcuts import render, redirect
 from .forms import UserForm, UserProfileForm, UpdateProfileForm
+from artwork.forms import ArtForm
 from artists.models import UserProfile
 from artwork.models import Art
-from artwork.views import artwork_edit, artwork_delete
 
 
 # Create your views here.
@@ -82,3 +82,28 @@ def update_profile(request):
     else:
         form = UpdateProfileForm(instance=request.user.userprofile)
     return render(request, 'accounts/update_profile.html', {'form': form})
+
+
+def draft_artwork_edit(request, art_slug):
+    if request.method == "POST":
+        art = get_object_or_404(Art, slug=art_slug)
+        art_form = ArtForm(data=request.POST, instance=art, user=request.user)
+
+        if art_form.is_valid():
+            art = art_form.save(commit=False)
+            art.status = 0  # setting status to 0: draft
+            art.save()
+            messages.add_message(request, messages.SUCCESS, 'Artwork awaiting admin review!')
+            return redirect('/accounts/signup/profile/')  # redirect to 'profile' URL
+        else:
+            print(art_form.errors)
+            messages.add_message(request, messages.ERROR, 'Error updating artwork!')
+    
+    return HttpResponseRedirect(reverse('art_details', args=[art_slug]))
+
+
+def draft_artwork_delete(request, art_slug):
+    art = get_object_or_404(Art, slug=art_slug)
+    art.delete()
+    messages.add_message(request, messages.SUCCESS, 'Draft deleted!')
+    return redirect('profile')  # redirect to 'profile' URL

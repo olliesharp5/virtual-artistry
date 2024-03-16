@@ -60,17 +60,102 @@
                                             <p class="text-white mb-4">{{ art.title }}</p>
                                             <div class="d-flex">
                                                 <button class="btn btn-edit" data-bs-toggle="modal"
-                                                    data-bs-target="#editArtModal">
+                                                    data-bs-target="#editArtModal-{{ art.slug }}">
                                                     <i class="fa-solid fa-pen-to-square"></i>
                                                 </button>
                                                 <button class="btn btn-delete-artwork" data-bs-toggle="modal"
-                                                    data-bs-target="#deleteArtModal">
+                                                    data-bs-target="#deleteArtModal-{{ art.slug }}">
                                                     <i class="fa-solid fa-trash"></i>
                                                 </button>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+
+                                <!-- Edit Draft Artwork Modal -->
+                                <div class="modal fade" id="editArtModal-{{ art.slug }}" tabindex="-1"
+                                    aria-labelledby="editArtModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="editArtModalLabel">Edit Artwork</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                    aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <form id="editArtForm" method="post"
+                                                    action="{% url 'art_edit' art.slug %}">
+                                                    {% csrf_token %}
+                                                    <div class="mb-3">
+                                                        <label for="title" class="form-label">Title</label>
+                                                        <input type="text" class="form-control" id="title" name="title"
+                                                            value="{{ art.title }}">
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label for="about" class="form-label">About</label>
+                                                        <textarea class="form-control" id="about"
+                                                            name="about">{{ art.about }}</textarea>
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label for="price" class="form-label">Price</label>
+                                                        <input type="text" class="form-control" id="price" name="price"
+                                                            value="{{ art.price }}">
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label for="year" class="form-label">Year</label>
+                                                        <input type="text" class="form-control" id="year" name="year"
+                                                            value="{{ art.year }}">
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label for="condition" class="form-label">Condition</label>
+                                                        <select class="form-control" id="condition" name="condition">
+                                                            <option value="0"
+                                                                {% if art.condition == 0 %}selected{% endif %}>New
+                                                            </option>
+                                                            <option value="1"
+                                                                {% if art.condition == 1 %}selected{% endif %}>Used
+                                                            </option>
+                                                        </select>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary"
+                                                    data-bs-dismiss="modal">Close</button>
+                                                <button type="submit" form="editArtForm" class="btn btn-primary">Save
+                                                    changes</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Delete  draft artwork confirmation modal -->
+                                <div class="modal fade" id="deleteArtModal-{{ art.slug }}" tabindex="-1"
+                                    aria-labelledby="deleteArtModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="deleteArtModalLabel">Delete artwork?</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                    aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                Are you sure you want to delete your artwork?
+                                                This action cannot be undone.
+                                            </div>
+                                            <form id="deleteArtForm" method="post"
+                                                action="{% url 'art_delete' art.slug %}">
+                                                {% csrf_token %}
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary"
+                                                        data-bs-dismiss="modal">Close</button>
+                                                    <button type="submit" class="btn btn-danger">Delete</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+
                                 {% empty %}
                                 <h3 class="text-center">You have no artwork pending review!</h3>
                                 {% endfor %}
@@ -80,6 +165,4 @@
                 </div>
             </div>
         </div>
-    </div>
-</div>
-{% endblock content %}
+        {% endblock content %}
