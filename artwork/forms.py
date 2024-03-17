@@ -8,6 +8,9 @@ class ArtForm(forms.ModelForm):
     class Meta:
         model = Art
         fields = ['title', 'about', 'art_image', 'price', 'year', 'condition']
+        labels = {
+            'art_image': 'Image',
+         }
 
     def __init__(self, *args, **kwargs):
         self.user = kwargs.pop('user', None)
