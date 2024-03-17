@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth import logout
+from django.contrib.auth import logout, login
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from .forms import UserForm, UserProfileForm, UpdateProfileForm
@@ -42,6 +42,7 @@ def register(request):
             profile = profile_form.save(commit=False)
             profile.user = user
             profile.save()
+            login(request, user)  # Log in the user
             return redirect('home')
     else:
         user_form = UserForm()
