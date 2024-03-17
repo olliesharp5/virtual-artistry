@@ -15,7 +15,7 @@
             <div class="card">
                 <div class="d-flex justify-content-between align-items-center">
                     <div class="card-header">
-                        <h4 class="mb-0">Role: {{userprofile.get_role_display}}</h4>
+                        <h6 class="mb-0">Role: {{userprofile.get_role_display}}</h6>
                     </div>
                     <a href="{% url 'update_profile' %}" class="btn btn-primary"><i
                             class="fa-solid fa-pen-to-square"></i></a>
@@ -28,12 +28,16 @@
                     <img src="{{ userprofile.profile_image.url }}" class="rounded-circle img-fluid mb-3"
                         alt="Profile Picture" width="150">
                     {% endif %}
-                    <h3 class="card-title">{{userprofile.display_name}}</h3>
-                    <h4 class="card-subtitle mb-3 text-muted">{{userprofile.location}}</h4>
+                    <h2 class="card-title">{{userprofile.display_name}}</h2>
+                    <h5 class="card-subtitle mb-3 text-muted">{{userprofile.location}}</h5>
                     <p class="card-text">{{userprofile.about}}</p>
                 </div>
-                <div class="card-footer">
-                    <a href="{% url 'account_change_password' %}">Manage your Password</a>
+                <div class="card-footer d-flex justify-content-between">
+                    <a href="{% url 'account_change_password' %}" class="btn btn-primary">Manage your Password</a>
+                    <button type="button" class="btn btn-danger" data-bs-toggle="modal"
+                        data-bs-target="#deleteProfileModal">
+                        Delete Profile
+                    </button>
                 </div>
             </div>
         </div>
@@ -89,7 +93,6 @@
                                         </div>
                                     </div>
                                 </div>
-
 
                                 <!-- Edit Draft Artwork Modal -->
                                 <div class="modal fade" id="editArtModal-{{ art.slug }}" tabindex="-1"
@@ -176,8 +179,36 @@
                                 </div>
 
                                 {% empty %}
-                                <h3 class="text-center">You have no artwork pending review!</h3>
+                                <div class="w-100 d-flex justify-content-center my-auto text-center">
+                                    <h6>You have no artwork pending review!</h6>
+                                </div>
                                 {% endfor %}
+                            </div>
+                        </div>
+                        <!-- Delete Profile Modal -->
+                        <div class="modal fade" id="deleteProfileModal" tabindex="-1"
+                            aria-labelledby="deleteProfileModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="deleteProfileModalLabel">Delete Profile?
+                                        </h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        Are you sure you want to delete your profile? This action cannot be
+                                        undone.
+                                    </div>
+                                    <form id="deleteProfileForm" method="post" action="{% url 'delete_user_profile' %}">
+                                        {% csrf_token %}
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary"
+                                                data-bs-dismiss="modal">Close</button>
+                                            <button type="submit" class="btn btn-danger">Delete</button>
+                                        </div>
+                                    </form>
+                                </div>
                             </div>
                         </div>
                     </div>

@@ -1,4 +1,7 @@
 from django.shortcuts import render, redirect
+from django.contrib.auth import logout
+from django.contrib.auth.decorators import login_required
+from django.contrib import messages
 from .forms import UserForm, UserProfileForm, UpdateProfileForm
 from artwork.forms import ArtForm
 from artists.models import UserProfile
@@ -82,6 +85,17 @@ def update_profile(request):
     else:
         form = UpdateProfileForm(instance=request.user.userprofile)
     return render(request, 'accounts/update_profile.html', {'form': form})
+
+
+@login_required
+def delete_user_profile(request):
+    user = request.user
+    user_profile = user.userprofile
+    user_profile.delete()
+    user.delete()
+    messages.add_message(request, messages.SUCCESS, 'Profile deleted!')
+    logout(request)
+    return redirect('home')  # redirect to 'home' URL
 
 
 def draft_artwork_edit(request, art_slug):
