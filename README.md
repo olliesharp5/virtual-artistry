@@ -1,6 +1,6 @@
 # Virtual Artistry
 
-Virtual Artistry is an online platform designed to showcase and sell artwork from various artists. It serves as a digital marketplace where artists can connect with art enthusiasts and potential buyers worldwide.
+"Virtual Artistry" is a dynamic online platform conceived with the unique aim of showcasing and commercializing diverse works of art. As a vibrant digital marketplace, it provides a much-needed stage for artists to make their creations visible to a global audience. It also acts as a bridge, seamlessly connecting art creators with admirers and prospective buyers, thus fostering a thriving and interactive art community worldwide.
 
 # Table of Contents
 - [Virtual Artistry](#virtual-artistry)
@@ -42,52 +42,95 @@ Virtual Artistry is an online platform designed to showcase and sell artwork fro
 ### A live demo to the website can be found [here](INSERT LINK TO LIVE SITE)
 
 ## UX
-WHO IS THE SITE TARGETING
+This website is primarily targeting art enthusiasts, collectors, and artists. The prime intention is to create an online platform where artists can showcase their work and art lovers can discover, appreciate, and purchase outstanding pieces of art. 
+
+- **Art enthusiasts and collectors**: These are the main users who come to browse, appreciate, and potentially purchase art. They can explore a wide variety of artworks by different artists from the comfort of their homes. They can also interact directly with artists to inquire more about specific pieces of art, leave reviews, and like their favored pieces. 
+
+- **Artists**: From established artists to emerging talents, the site offers an open platform to display their work, get feedback from the community of art lovers, and even sell their pieces. Artists can manage their profile and art adverts and see their work appreciated through likes and comments. 
+
+This user-centric design aims to provide smooth and intuitive navigation, functionality, and interaction tailored to the needs, wants, and expectations of its target audience, making art more accessible and enjoyable for everyone involved.
 
 ## User stories
 INSERT USER STORIES
 
 ### Strategy
 
+My primary goal in creating "Virtual Artistry" was to design an all-encompassing platform that celebrates art and its creators, making it easy and straightforward for them to connect with art enthusiasts and potential buyers. I aimed to make the artwork the hero and ensure that the platform supported its presentation effectively.
+
+The strategy behind the website can be broken down into several key objectives:
+
+- **For Artists**: To provide artists with a platform to showcase their work, gain exposure and interact with their audience. Artists should be able to easily manage their profiles and advertisements, and have ample opportunities to promote and sell their pieces.
+
+- **For Art Enthusiasts**: For those who appreciate art, the platform should offer a diverse and extensive collection, filters to sort and discover the works that interest them, and an opportunity to interact directly with artists. 
+
+- **For Potential Buyers**: For those looking to buy, the platform should offer clear information about the artwork and artist, a direct line of communication with the artist for inquiries, and ultimately a seamless buying procedure (future implementation).
+
+An important part of the strategy was also to make the platform as user-friendly and accessible as possible. This led to decisions like using a responsive design, intuitive navigation, and incorporating interactive elements such as liking and reviewing pieces.
 
 ### Scope
 
 **User Management**
-   - User registration and authentication.
-   - User roles and permissions for various levels of access.
-   - Profile creation and management.
+- Registration and authentication for users who wish to create, buy, or appreciate art.
+- Differentiation of user roles and permissions allowing for various levels of access: regular user, artist, or admin.
+- Detailed profile creation and management, including options such as display name, location, profile image and about information.
 
-**Communication Features**
-   - Real-time messaging functionality for group discussions in channels.
-   - Direct messaging for private one-on-one conversations.
-   - Multimedia support, including file attachments and emoji reactions.
+**Artist and Artwork Interaction Features**
+- Detailed view functionality for artwork including larger image, title, artist name, location, price, year, and condition.
+- Direct messaging or contact option between any user and the artist creating an avenue for private conversations regarding the artwork.
+- Support for interactive features like liking and reviewing art pieces.
 
-**Channel Management**
-   - Creation, joining, and leaving of channels.
-   - Categorization of channels based on Code Innovate topics or modules.
-   - Ability to search and discover relevant channels.
+**Artwork Management**
+- Creation, editing, and deletion of artwork advertisements by artists, pending admin approval.
+- Categorization of artwork based on artist, price, and condition, as selected by the viewer.
+- Inbuilt search functionality to discover relevant artists or artworks on the site.
 
 **User Interface and Experience**
-   - Intuitive and user-friendly interface for seamless navigation.
-   - Responsive design for accessibility on various devices.
-   - Personalization options for user profiles.
+- Simple and intuitive interface for ease of navigation throughout the art gallery.
+- A responsive design for accessibility on various devices, ensuring a comfortable user experience irrespective of the platform.
+- Personalization options for user profiles, allowing a more immersive and individualized user experience.
 
 **Responsiveness**<br>
-* Create a responsive design for desktop, tablet and mobile devices.<br><br>
+- Regardless of the screen size or the device, the website maintains its functionality and aesthetics, providing an optimal user experience across all platforms. 
+
+- It has a mobile-first design approach, ensuring the site looks spectacular and works seamlessly on smaller screens like those of mobile phones and tablets. 
+
+- The use of responsive design principles allows for flexible images and fluid grids. It ensures that the layout adjusts and elements resize depending on the device’s screen size, from the small confines of a smartphone to the wide expanse of a desktop display.
+
+- The navigation menu is collapsible on smaller screens for a clean and user-friendly interface. Similarly, card layouts, buttons, and forms also adjust accordingly to maintain usability and readability.
+
+- This multi-device compatibility not only improves user experience but also enhances the site's SEO performance.
 
 
 **Website Sections:**
-1. **_Artwork_** 
-2. **__** 
-3. **__** 
-4. **_** 
-5. **__** 
-6. **__**  
-7. **__**  
-8. **_Footer:_** This is not the main section of the website but rather an ending to the website with social media links. 
+1. **_Base Header and Footer:_** A unified header and footer with functionalities varying based on login status and user role.
+2. **_Artwork:_** Artwork catalog with filter options and paginated display encouraging users to register or login.
+3. **_Artwork Advert:_** Detailed view of selected artwork with interaction options varying based on user status.
+4. **_Artists:_** Paginated display of artists registered on the site with each card displaying profile image, name, and location.
+5. **_Artist Profile:_** Summary of an artist including their details and portfolio of published artwork.
+6. **_Help:_** A component for submitting customer service requests.
+7. **_Profile:_** Personalized user profile with various functionalities including profile editing, password management, and profile deletion.
+8. **_Register:_** Registration functionality with role selection and profile creation.
+9. **_Login:_** Simple login form with validations to provide appropriate user feedback.
+10. **_Logout:_** Functionality to log out with a confirm prompt to ensure intentional actions by the user.
 
 ### Skeleton
-The website is designed to be clear and simple. The site has a simple tree structure with hierarchical flows from top to bottom.
+The website is designed with the principles of both clarity and simplicity. 
+
+- **Header**: The topmost section includes a responsive navigation bar with links to different sections of the site: the title (home), artwork, artists, and help. Depending on the user's role (visitor, regular user, artist, or admin) and the state of login, different options are dynamically displayed in the header.
+
+- **Body**: The body of the site changes dynamically based on the link clicked from the header. It can display the catalogue of all published artwork, detailed view of an artwork, profile view of an artist, form for help requests, user's profile page, or forms for registration and login. 
+
+- **Artwork and Artists' Pages**: These are paginated and sorted in a card display format. 
+
+- **Help Section**: This includes a form through which users can submit their customer service requests.
+
+- **Profile Section**: Here users can view their profile information and depending on their role may edit their adverts, edit profile details, change password, and delete their profile.
+
+- **Register and Login Pages**: Both include forms with validations that display error reason if user's input fails validation.
+
+- **Footer**: The lowermost static part of the site displays copyright information.
+
+The website employs a hierarchical tree structure where the home page serves as the root. The different sections of the site can be accessed from the top-level navigation in the header. The flows from top to bottom are intuitive and provide a seamless user experience.
 
 **Wireframe**
 The wireframe is designed using Balsamiq software.
@@ -95,22 +138,28 @@ The wireframe is designed using Balsamiq software.
 ![wireframe](INSERT FILEPATH)
 
 ### Planning
-The project was designed meticulously using the agile framework, epitomizing the benefits of a dynamic team-based workflow. Our major planning and communication tool was a Kanban board, used to visualize tasks, outline their status and progress, and precisely denote who was responsible for what. The project was broken down into several manageable tasks and then plotted on the Kanban board, structured into columns specifying stages such as 'To-Do', 'In Progress', and 'Done'. The use of the Kanban board ensured real-time communication of work status to the team, providing a rich landscape of our project progress at any given time. This fostered timely reviews, quick alterations, and overall fluidity, propelling the project towards successful accomplishment.
+
+I meticulously designed this project using the agile methodology, really showcasing the benefits of a dynamic, iterative development process. My primary planning and communication tool was a Kanban board, which I used to visualize tasks, detail their status and progress, and track individual responsibilities.
+
+I broke down the project into manageable tasks and plotted them on the Kanban board. The board had columns specifying stages such as 'To-Do', 'In Progress', and 'Done'. This allowed me to clearly see what I had accomplished, what I was currently working on, and what still needed to be done.
+
+The use of the Kanban board provided a clear, real-time overview of the project's progress. It facilitated regular reviews, quick adjustments and maintained the fluidity of the development process. This thoughtful planning and organization guided the project towards its successful completion.
 
 ![kanban](INSERT FILEPATH)
 
 
 ### Surface
 
-The color pallette for the site was chosen because it matched the colour associated with currency and also provided good contrast and accessibility. The font family was chosen as it is easy to read.
+The design aesthetics of the site incorporate a color palette that complement detailed visuals of the artwork and a canvas textured background to evoke an artistic atmosphere. For all pages, I chose a canvas-textured background to give a real-life feel of observing art on a canvas. 
+
+I specifically selected the color palette to match the sophistication of an art gallery while ensuring good contrast and accessibility. The key colors used across the site are #5e3c58, a deep purple adding a sense of luxury and creativity;and #faebd7, an antique white that provides a clean, neutral background allowing the artworks to stand out.
 
 | Hex | RGB |
 | -------------- | ----------------- |
-| #244c3c | (36,76,60) |
-| #526c5b | (82,108,91) |
-| #dcdcbb | (220,220,187) |
-| #425e6a | (66,94,106) |
-| #fa6e06 | (250,110,6) |
+| #5e3c58 | (94, 60, 88) |
+| #faebd7 | (250, 235, 215) |
+
+The font family used across the site is 'Crimson Text', serif. This typography was chosen for its readability and elegance, aligning with the overall aesthetic of an online art gallery.
 
 ## Technologies <hr>
 
@@ -135,19 +184,66 @@ The website is designed using following technologies: HTML, CSS, Bootstrap, Java
 
 ### Existing Features
 
-* SECTION OF WEBSITE 
-DESCRIPTION OF SITE 
+* Base Header and Footer
+The base header contains a responsive navigation bar including the title of the site, Artwork, Artists and Help links.  If the user is logged in as an artist, an additional option to create an advert will display. Logged in users, will see their Profile, Logout options as well as a welcoming message. If a user isn't logged in, the Register and Log in options will be displayed in place of the Logout button and welcome message. The base footer contains the standard copyright information.
   
 ![SCREENSHOT](INSERT FILEPATH)
 
 
-INSERT OTHER SITE PAGES 
+* Artwork
+This page showcases all the published artwork in a paginated card format including an image, title, and artist name. There is a filter option to sort the artwork by artist, price, and condition. If user is not logged in, a banner will display advising them to register or login to unlock all the features of the site. 
+  
+![SCREENSHOT](INSERT FILEPATH)
 
+* Artwork Advert 
+Clicking on an artwork card brings up a detailed view with information like larger image, title, artist name, location, price, year, and artwork's condition. It also includes sections for About, Like counter, and reviews. If the logged in user is the owner of the artwork, they get options to edit or delete the artwork. Other logged in users will see options to contact seller, like, and review the artwork. Contacting seller will copy their email to clipboard. Likes on the artwork and reviews can be registered by the users. If the user is not logged in, only the artwork information and reviews will display. 
+  
+![SCREENSHOT](INSERT FILEPATH)
+
+* Artists 
+This page displays a paginated card arrangement of all registered artists on the site. Cards contain profile image, name, and location of the artists.
+  
+![SCREENSHOT](INSERT FILEPATH)
+
+* Artist Profile
+Clicking an artist card will redirect user to their profile. It includes artist's details and a display of their published artwork.
+  
+![SCREENSHOT](INSERT FILEPATH)
+
+* Help 
+This page contains a form for users to submit customer service requests, which are saved into the database for subsequent actions. 
+  
+![SCREENSHOT](INSERT FILEPATH)
+
+* Profile
+This page displays logged in user's profile with information like assigned role, profile image, display name, location, and about section. There are options to edit profile, manage password, and delete profile. Artists will see additionally their pending artwork adverts for admin approval.  
+  
+![SCREENSHOT](INSERT FILEPATH)
+
+* Register 
+Users can register selecting either a regular user, artist or admin role. Following these, they need to fill up user profile details including a display name, location, profile photo and about information. After successful registration, they will be redirected to the home page. If any required field is empty or incorrect, an error message will display.
+  
+![SCREENSHOT](INSERT FILEPATH)
+
+* Login 
+Selecting the login button redirects users to a login page where they can enter their username and password. After successful login, they are redirected to the home page. 
+  
+![SCREENSHOT](INSERT FILEPATH)
+
+* Logout 
+In order to log out, users need to confirm their action on a prompt. After successful logout, they are redirected back to the main page.
+  
+![SCREENSHOT](INSERT FILEPATH)
 
 ### Features Left to Implement
 
 In the future I would like to add, 
-* 
+1. **Shopping Cart and Checkout**: A functionality to allow users to purchase artwork directly from the website, along with a secure checkout system.
+
+2. **Social Media Integration**: Enable sharing of artists' profiles and individual artworks on various social media platforms to increase traffic and user engagement.
+
+3. **Artwork Auction**: Implement an auction system where users can bid on artwork. This could be an exciting way to promote interaction and sales.
+
 ## Testing
 
 * I tested the site, and it works in different web browsers: Chrome, Firefox, and Microsoft Edge.
@@ -180,11 +276,12 @@ No errors were found when passing through the contrast validator.
 
 * Unable to render crispyforms 
 * Form unable to POST to update a review due to an error in url.py filepath. /art/ needed in front of urlpattern
-* reviewId coming throuigh as null. Debugged Js using console.log queries, amended the getAttribute value to data-review_id from review_id to obtain the correct reviewid value. 
+* reviewId coming through as null. Debugged Js using console.log queries, amended the getAttribute value to data-review_id from review_id to obtain the correct reviewid value. 
 * Invalid password format or unknown hashing algorithm. - amended the register view to hash the password before being stored in the database. 
 
 #### Unfixed Bugs
 
+* The masonry style is an experimental feature of Bootstrap5. It has been used in the artwork page to display the cards in a way that compliments both portrait and landscape artwork. This style can somethimes struggle to arrange the tiles correctly, hwoever with a refresh of the page it will resolve. 
 
 ## Deployment
 
@@ -203,7 +300,6 @@ The following git commands were used throughout development to push code to the 
 - Heroku provides a platform for hosting web applications.
 - The deployed site will update automatically upon new commits to the main branch.
 
-
 ### Performance
 The performance of the website was tested with [Google Lighthouse](INSERT LINK TO REPORT)
 
@@ -215,7 +311,6 @@ The performance of the website was tested with [Google Lighthouse](INSERT LINK T
 ### Content
 * The idea for the offcanvas backdrop to house the filter properties was taken from https://getbootstrap.com/docs/5.0/components/offcanvas/
 * implementation of masonry layout: https://masonry.desandro.com/
-
 
 ### Media
 
