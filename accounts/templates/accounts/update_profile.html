@@ -10,7 +10,8 @@
                     <h1 class="card-title">Update Profile</h1>
                     <form method="post" action="{% url 'update_profile' %}" enctype="multipart/form-data">
                         {% csrf_token %}
-                        {{ form.as_p }}
+                        {{ user_form.as_p }}
+                        {{ profile_form.as_p }}
                         <button class="btn btn-primary" type="submit">Update</button>
                         <a href="{% url 'profile' %}" class="btn btn-primary">Back to Profile</a>
                     </form>

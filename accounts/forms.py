@@ -9,6 +9,11 @@ class UserForm(forms.ModelForm):
         model = User
         fields = ['username', 'email', 'password']
 
+class UpdateUserForm(forms.ModelForm):
+    class Meta:
+        model = User
+        fields = ['username', 'email']
+
 class UserProfileForm(forms.ModelForm):
     class Meta:
         model = UserProfile
