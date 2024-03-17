@@ -36,7 +36,9 @@ def register(request):
         user_form = UserForm(request.POST)
         profile_form = UserProfileForm(request.POST, request.FILES)
         if user_form.is_valid() and profile_form.is_valid():
-            user = user_form.save()
+            user = user_form.save(commit=False)  # Don't save the User instance yet
+            user.set_password(user_form.cleaned_data['password'])  # Set the password
+            user.save()  # Now save the User instance
             profile = profile_form.save(commit=False)
             profile.user = user
             profile.save()
