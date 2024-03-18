@@ -41,7 +41,7 @@
                 </div>
             </div>
         </div>
-
+        {% if user.is_authenticated and user.userprofile.is_artist %}
         <!-- Pending Artworks Card -->
         <div class="col-lg-8 mx-auto mt-3">
             <div class="card">
@@ -92,92 +92,93 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-
-                                <!-- Edit Draft Artwork Modal -->
-                                <div class="modal fade" id="editArtModal-{{ art.slug }}" tabindex="-1"
-                                    aria-labelledby="editArtModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="editArtModalLabel">Edit Draft Artwork</h5>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                    aria-label="Close"></button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <form id="editArtForm" method="post"
-                                                    action="{% url 'art_edit' art.slug %}">
-                                                    {% csrf_token %}
-                                                    <div class="mb-3">
-                                                        <label for="title" class="form-label">Title</label>
-                                                        <input type="text" class="form-control" id="title" name="title"
-                                                            value="{{ art.title }}">
-                                                    </div>
-                                                    <div class="mb-3">
-                                                        <label for="about" class="form-label">About</label>
-                                                        <textarea class="form-control" id="about"
-                                                            name="about">{{ art.about }}</textarea>
-                                                    </div>
-                                                    <div class="mb-3">
-                                                        <label for="price" class="form-label">Price</label>
-                                                        <input type="text" class="form-control" id="price" name="price"
-                                                            value="{{ art.price }}">
-                                                    </div>
-                                                    <div class="mb-3">
-                                                        <label for="year" class="form-label">Year</label>
-                                                        <input type="text" class="form-control" id="year" name="year"
-                                                            value="{{ art.year }}">
-                                                    </div>
-                                                    <div class="mb-3">
-                                                        <label for="condition" class="form-label">Condition</label>
-                                                        <select class="form-control" id="condition" name="condition">
-                                                            <option value="0"
-                                                                {% if art.condition == 0 %}selected{% endif %}>New
-                                                            </option>
-                                                            <option value="1"
-                                                                {% if art.condition == 1 %}selected{% endif %}>Used
-                                                            </option>
-                                                        </select>
-                                                    </div>
-                                                </form>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary"
-                                                    data-bs-dismiss="modal">Close</button>
-                                                <button type="submit" form="editArtForm" class="btn btn-primary">Save
-                                                    changes</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!-- Delete  draft artwork confirmation modal -->
-                                <div class="modal fade" id="deleteArtModal-{{ art.slug }}" tabindex="-1"
-                                    aria-labelledby="deleteArtModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="deleteArtModalLabel">Delete draft?</h5>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                    aria-label="Close"></button>
-                                            </div>
-                                            <div class="modal-body">
-                                                Are you sure you want to delete your draft?
-                                                This action cannot be undone.
-                                            </div>
-                                            <form id="deleteArtForm" method="post"
-                                                action="{% url 'art_delete' art.slug %}">
-                                                {% csrf_token %}
+                                    <!-- Edit Draft Artwork Modal -->
+                                    <div class="modal fade" id="editArtModal-{{ art.slug }}" tabindex="-1"
+                                        aria-labelledby="editArtModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="editArtModalLabel">Edit Draft Artwork
+                                                    </h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                        aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <form id="editArtForm" method="post"
+                                                        action="{% url 'art_edit' art.slug %}">
+                                                        {% csrf_token %}
+                                                        <div class="mb-3">
+                                                            <label for="title" class="form-label">Title</label>
+                                                            <input type="text" class="form-control" id="title"
+                                                                name="title" value="{{ art.title }}">
+                                                        </div>
+                                                        <div class="mb-3">
+                                                            <label for="about" class="form-label">About</label>
+                                                            <textarea class="form-control" id="about"
+                                                                name="about">{{ art.about }}</textarea>
+                                                        </div>
+                                                        <div class="mb-3">
+                                                            <label for="price" class="form-label">Price</label>
+                                                            <input type="text" class="form-control" id="price"
+                                                                name="price" value="{{ art.price }}">
+                                                        </div>
+                                                        <div class="mb-3">
+                                                            <label for="year" class="form-label">Year</label>
+                                                            <input type="text" class="form-control" id="year"
+                                                                name="year" value="{{ art.year }}">
+                                                        </div>
+                                                        <div class="mb-3">
+                                                            <label for="condition" class="form-label">Condition</label>
+                                                            <select class="form-control" id="condition"
+                                                                name="condition">
+                                                                <option value="0"
+                                                                    {% if art.condition == 0 %}selected{% endif %}>New
+                                                                </option>
+                                                                <option value="1"
+                                                                    {% if art.condition == 1 %}selected{% endif %}>Used
+                                                                </option>
+                                                            </select>
+                                                        </div>
+                                                    </form>
+                                                </div>
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-secondary"
                                                         data-bs-dismiss="modal">Close</button>
-                                                    <button type="submit" class="btn btn-danger">Delete</button>
+                                                    <button type="submit" form="editArtForm"
+                                                        class="btn btn-primary">Save
+                                                        changes</button>
                                                 </div>
-                                            </form>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Delete  draft artwork confirmation modal -->
+                                    <div class="modal fade" id="deleteArtModal-{{ art.slug }}" tabindex="-1"
+                                        aria-labelledby="deleteArtModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="deleteArtModalLabel">Delete draft?</h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                        aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    Are you sure you want to delete your draft?
+                                                    This action cannot be undone.
+                                                </div>
+                                                <form id="deleteArtForm" method="post"
+                                                    action="{% url 'art_delete' art.slug %}">
+                                                    {% csrf_token %}
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary"
+                                                            data-bs-dismiss="modal">Close</button>
+                                                        <button type="submit" class="btn btn-danger">Delete</button>
+                                                    </div>
+                                                </form>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-
                                 {% empty %}
                                 <div class="w-100 d-flex justify-content-center my-auto text-center">
                                     <h6>You have no artwork pending review!</h6>
@@ -185,33 +186,33 @@
                                 {% endfor %}
                             </div>
                         </div>
-                        <!-- Delete Profile Modal -->
-                        <div class="modal fade" id="deleteProfileModal" tabindex="-1"
-                            aria-labelledby="deleteProfileModalLabel" aria-hidden="true">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="deleteProfileModalLabel">Delete Profile?
-                                        </h5>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                            aria-label="Close"></button>
-                                    </div>
-                                    <div class="modal-body">
-                                        Are you sure you want to delete your profile? This action cannot be
-                                        undone.
-                                    </div>
-                                    <form id="deleteProfileForm" method="post" action="{% url 'delete_user_profile' %}">
-                                        {% csrf_token %}
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary"
-                                                data-bs-dismiss="modal">Close</button>
-                                            <button type="submit" class="btn btn-danger">Delete</button>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
                     </div>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+
+        <!-- Delete Profile Modal -->
+        <div class="modal fade" id="deleteProfileModal" tabindex="-1" aria-labelledby="deleteProfileModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="deleteProfileModalLabel">Delete Profile?
+                        </h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        Are you sure you want to delete your profile? This action cannot be
+                        undone.
+                    </div>
+                    <form id="deleteProfileForm" method="post" action="{% url 'delete_user_profile' %}">
+                        {% csrf_token %}
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-danger">Delete</button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>

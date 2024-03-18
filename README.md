@@ -51,7 +51,9 @@ This website is primarily targeting art enthusiasts, collectors, and artists. Th
 This user-centric design aims to provide smooth and intuitive navigation, functionality, and interaction tailored to the needs, wants, and expectations of its target audience, making art more accessible and enjoyable for everyone involved.
 
 ## User stories
-INSERT USER STORIES
+
+User stories and can be viewed here on the project [kanban board ](https://github.com/users/olliesharp5/projects/3/views/1)
+
 
 ### Strategy
 
@@ -145,7 +147,7 @@ I broke down the project into manageable tasks and plotted them on the Kanban bo
 
 The use of the Kanban board provided a clear, real-time overview of the project's progress. It facilitated regular reviews, quick adjustments and maintained the fluidity of the development process. This thoughtful planning and organization guided the project towards its successful completion.
 
-![kanban](INSERT FILEPATH)
+![kanban](https://github.com/users/olliesharp5/projects/3/views/1)
 
 
 ### Surface
@@ -163,7 +165,7 @@ The font family used across the site is 'Crimson Text', serif. This typography w
 
 ## Technologies <hr>
 
-The website is designed using following technologies: HTML, CSS, Bootstrap, Javascript, Django, MarkDown
+The website is designed using following technologies: HTML, CSS, Bootstrap, Javascript, Django, MarkDown, ElephantSQL, Chrome Dev Tools, Favicon
 
 ### Libraries
 
