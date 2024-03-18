@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.contrib import messages
 from .forms import HelpForm
 from .models import HelpRequest
@@ -38,6 +38,7 @@ def help_page(request):
             help_request = HelpRequest()
             help_request = help_form.save()
             messages.add_message(request, messages.SUCCESS, "Customer service request received! Response to be expected within 2 days")
+            return redirect('home')  # Redirect to home page
         else:
             messages.add_message(request, messages.ERROR, "There was an error in your form. Please try again.")
     else:
@@ -45,7 +46,7 @@ def help_page(request):
     
     return render(
         request, 
-        'help.html', 
+        'help/help.html', 
         {
         "help_form": help_form
         }, 
