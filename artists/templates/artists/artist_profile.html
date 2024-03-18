@@ -35,21 +35,22 @@
                 <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
                     {% for art in object_list %}
                     <div class="col">
-                        <div class="card shadow-sm artwork">
-                            <div class="card-img-container position-relative overflow-hidden">
-                                {% if not art.art_image or "placeholder" in art.art_image.url %}
-                                <img class="card-img-top" src="{% static 'images/placeholder_image.png' %}"
-                                    alt="{{ art.title }}">
-                                {% else %}
-                                <img class="card-img-top" src=" {{ art.art_image.url }}" alt="{{ art.title }}">
-                                {% endif %}
+                        <a href="{% url 'art_details' art.slug %}" class="text-decoration-none text-reset">
+                            <div class="card shadow-sm artwork">
+                                <div class="card-img-container position-relative overflow-hidden">
+                                    {% if not art.art_image or "placeholder" in art.art_image.url %}
+                                    <img class="card-img-top" src="{% static 'images/placeholder_image.png' %}"
+                                        alt="{{ art.title }}">
+                                    {% else %}
+                                    <img class="card-img-top" src=" {{ art.art_image.url }}" alt="{{ art.title }}">
+                                    {% endif %}
+                                </div>
+                                <div
+                                    class="artwork-title position-absolute w-100 h-100 d-flex align-items-center justify-content-center">
+                                    <span class="text-white">{{ art.title }}</span>
+                                </div>
                             </div>
-                            </a>
-                            <div
-                                class="artwork-title position-absolute w-100 h-100 d-flex align-items-center justify-content-center">
-                                <a href="{% url 'art_details' art.slug %}" class="text-white">{{ art.title }}</a>
-                            </div>
-                        </div>
+                        </a>
                     </div>
                     {% endfor %}
                 </div>

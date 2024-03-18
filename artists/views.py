@@ -30,7 +30,7 @@ class ArtistList(FilterView):
     :template:`artists.html`
     """
     filterset_class = UserProfileFilter
-    template_name = "artists.html"
+    template_name = "artists/artists.html"
     paginate_by = 6
 
     def get_queryset(self):
@@ -63,4 +63,4 @@ def artist_profile(request, username):
     user = get_object_or_404(User, username=username)
     artistprofile = UserProfile.objects.get(user=user)
     artworks = Art.objects.filter(artist=artistprofile).exclude(status=0)
-    return render(request, 'artist_profile.html', {'artistprofile': artistprofile, 'object_list': artworks})
+    return render(request, 'artists/artist_profile.html', {'artistprofile': artistprofile, 'object_list': artworks})
