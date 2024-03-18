@@ -32,7 +32,7 @@ class ArtList(generic.ListView):
     :template:`index.html`
     """
     model = Art
-    template_name = "index.html"
+    template_name = "artwork/index.html"
 
     def get_queryset(self):
         queryset = super().get_queryset()
@@ -85,7 +85,7 @@ def art_details(request, art_slug):
         review.author = request.user.userprofile  # Set the author to the current user.profile
         review.save()
     reviews = Review.objects.filter(art=art, approved=True)  # Fetch approved reviews
-    return render(request, 'art_detail.html', 
+    return render(request, 'artwork/art_detail.html', 
         {'art': art, 'user_has_liked': user_has_liked, 'review_form': form, 'reviews': reviews, 'artist_profile': artist_profile,}
     )
 
@@ -122,7 +122,7 @@ def create_advert(request):
             return redirect('home')
     else:
         form = ArtForm(user=request.user)
-    return render(request, 'create_art.html', {'form': form})
+    return render(request, 'artwork/create_art.html', {'form': form})
 
 @login_required
 def like_artwork(request, art_slug):
@@ -178,7 +178,7 @@ def review(request):
             return redirect('art_details', art_slug=artwork.slug)
     else:
         form = ReviewForm()
-    return render(request, 'art_detail.html', {'form': form})
+    return render(request, 'artwork/art_detail.html', {'form': form})
 
 
 def review_edit(request, art_slug, review_id):
