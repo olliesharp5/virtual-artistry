@@ -26,7 +26,7 @@
       {% for artistprofile in object_list %}
       <div class="col">
         <a href="{% url 'artist_profile' artistprofile.user.username %}">
-          <div class="card shadow-sm loading-item3 mx-auto hover-effect">
+          <div class="card artist-card shadow-sm loading-item3 mx-auto hover-effect">
             {% if not artistprofile.profile_image or "placeholder" in artistprofile.profile_image.url %}
             <img class="card-img-top img-fluid" src="{% static 'images/nobody.jpg' %}" alt="artist image">
             {% else %}
@@ -35,7 +35,7 @@
             {% endif %}
             <div class="card-body">
               <p class="card-text card-title">{{artistprofile.display_name}}</p>
-              <p class="card-text card-artist">{{artistprofile.location}}</p>
+              <p class="card-text location-artist">{{artistprofile.location}}</p>
             </div>
           </div>
         </a>

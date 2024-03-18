@@ -94,7 +94,7 @@ a {
     font-size: larger;
 }
 
-.card-artist {
+.location-artist {
     font-family: "Roboto", sans-serif;
     font-style: italic;
 }
@@ -111,9 +111,6 @@ a {
 
 .hover-effect:hover {
     transform: scale(1.1);
-}
-
-.advert-container {
 }
 
 .image-container {
@@ -157,7 +154,6 @@ a {
 .form-group {
     margin-bottom: 5px;
 }
-
 
 .letter-button,
 .mx-2 {
