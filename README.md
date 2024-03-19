@@ -14,6 +14,7 @@
     - [Skeleton](#skeleton)
     - [Planning](#planning)
     - [Surface](#surface)
+    - [Models] (#models)
   - [Technologies](#technologies)
     - [Libraries](#libraries)
     - [Frameworks & Extensions](#frameworks--extensions)
@@ -163,6 +164,68 @@ I specifically selected the color palette to match the sophistication of an art 
 
 The font family used across the site is 'Crimson Text', serif. This typography was chosen for its readability and elegance, aligning with the overall aesthetic of an online art gallery.
 
+### Models
+
+#### Artwork App
+
+##### Art
+
+| Field Name | Field Type | Validation/Choices |
+| --- | --- | --- |
+| title | CharField | max_length=100, unique=True |
+| slug | SlugField | max_length=100, unique=True |
+| artist | ForeignKey(UserProfile) | on_delete=models.CASCADE, related_name="art_posts" |
+| about | TextField |  |
+| art_image | CloudinaryField | default='art_placeholder' |
+| price | DecimalField | max_digits=10, decimal_places=2 |
+| year | PositiveIntegerField | validators=[MinValueValidator(1600), MaxValueValidator(datetime.date.today().year)], default=datetime.date.today().year |
+| condition | IntegerField | choices=CONDITION, default=0 |
+| created_on | DateTimeField | auto_now_add=True |
+| status | IntegerField | choices=STATUS, default=0 |
+
+##### Like
+
+| Field Name | Field Type |
+| --- | --- |
+| user | ForeignKey(UserProfile) |
+| art | ForeignKey(Art) |
+
+##### Review
+
+| Field Name | Field Type | Validation/Choices |
+| --- | --- | --- |
+| art | ForeignKey(Art) | on_delete=models.CASCADE, related_name="reviews" |
+| author | ForeignKey(UserProfile) | on_delete=models.CASCADE, related_name="reviewer" |
+| body | TextField |  |
+| rating | IntegerField | validators=[MinValueValidator(1), MaxValueValidator(5)] |
+| approved | BooleanField | default=False |
+| created_on | DateTimeField | auto_now_add=True |
+
+#### Artists App
+
+##### UserProfile
+
+| Field Name | Field Type | Validation/Choices |
+| --- | --- | --- |
+| user | OneToOneField(User) | on_delete=models.CASCADE, default="1" |
+| role | CharField | max_length=2, choices=USER_ROLES, default='RU' |
+| display_name | CharField | max_length=100, null=True, blank=True, unique=True |
+| location | TextField |  |
+| profile_image | CloudinaryField | default='profile_placeholder' |
+| about | TextField |  |
+
+#### Help App
+
+##### HelpRequest
+
+| Field Name | Field Type |
+| --- | --- |
+| name | CharField | max_length=200 |
+| email | EmailField |  |
+| message | TextField |  |
+| created_at | DateTimeField | auto_now_add=True |
+
+
 ## Technologies <hr>
 
 The website is designed using following technologies: HTML, CSS, Bootstrap, Javascript, Django, MarkDown, ElephantSQL, Chrome Dev Tools, Favicon
@@ -257,21 +320,27 @@ In the future I would like to add,
 #### HTML
 No errors were found when passing through the official W3C validator.
 
-![html_validator](INSERT FILEPATH)
-
 #### CSS
 No errors were found when passing through the official (Jigsaw) validator.
 
-![css_validator](INSERT FILEPATH)
-
-#### Python Linter
-
 #### JSHint
+No errors were found when passing through the official (JSHint) validator.
 
+| HTML Validation Screenshots | CSS Validation Screenshot | JavaScript Validation Screenshots |
+|:---------------------------:|:-------------------------:|:---------------------------------:|
+| <img src="./assets/readme-assets/html-validator-base.png" width="400"> | <img src="./assets/readme-assets/css-validator.png" width="400"> | <img src="./assets/readme-assets/js-validator-main.js.png" width="400"> |
+| <img src="./assets/readme-assets/html-validator-artwork.png" width="400"> |                           | <img src="./assets/readme-assets/js-validator-masonry.js.png" width="400"> |
+| <img src="./assets/readme-assets/html-validator-art_detail.png" width="400"> |                           | <img src="./assets/readme-assets/js-validator-review.js.png" width="400"> |
+| <img src="./assets/readme-assets/html-validator-create-advert.png" width="400"> |                           | <img src="./assets/readme-assets/js-validator-script.js.png" width="400"> |
+| <img src="./assets/readme-assets/html-validator-artists.png" width="400"> |                           |                                   |
+| <img src="./assets/readme-assets/html-validator-artist-profile.png" width="400"> |                           |                                   |
+| <img src="./assets/readme-assets/html-validator-profile.png" width="400"> |                           |                                   |
+| <img src="./assets/readme-assets/html-validator-register.png" width="400"> |                           |                                   |
+| <img src="./assets/readme-assets/html-validator-help.png" width="400"> |                           |                                   |
 #### WebAim Contrast checker 
 No errors were found when passing through the contrast validator.
 
-![contrast_validator](INSERT FILEPATH)
+![contrast_validator](/assets/readme-assets/contrast-checker.png)
 
 
 #### Fixed Bugs
