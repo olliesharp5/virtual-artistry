@@ -24,7 +24,7 @@
   <div class="container">
     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
       {% for artistprofile in object_list %}
-      <div class="col">
+      <div class="col loading-cards">
         <a href="{% url 'artist_profile' artistprofile.user.username %}">
           <div class="card artist-card shadow-sm loading-item3 mx-auto hover-effect">
             {% if not artistprofile.profile_image or "placeholder" in artistprofile.profile_image.url %}

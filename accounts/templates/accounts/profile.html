@@ -4,14 +4,14 @@
 
 {% block content %}
 
-<div class="container py-5">
+<div class="container py-5 loading-item2">
     <div class="row mb-5">
         <div class="col-md-12">
             <a href="{% url 'home' %}" class="btn btn-secondary mb-3 loading-item1">Back to Home</a>
         </div>
 
         <!-- User Profile Card -->
-        <div class="col-lg-8 mx-auto">
+        <div class="col-lg-8 mx-auto loading-item2">
             <div class="card">
                 <div class="d-flex justify-content-between align-items-center">
                     <div class="card-header">
@@ -43,7 +43,7 @@
         </div>
         {% if user.is_authenticated and user.userprofile.is_artist %}
         <!-- Pending Artworks Card -->
-        <div class="col-lg-8 mx-auto mt-3">
+        <div class="col-lg-8 mx-auto mt-3 loading-item2">
             <div class="card">
                 <div class="card-header">
                     <h4 class="mb-0">Artworks pending approval</h4>
