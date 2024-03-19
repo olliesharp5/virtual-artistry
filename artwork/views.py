@@ -33,6 +33,7 @@ class ArtList(generic.ListView):
     """
     model = Art
     template_name = "artwork/index.html"
+    paginate_by = 8
 
     def get_queryset(self):
         queryset = super().get_queryset()

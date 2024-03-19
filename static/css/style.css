@@ -198,6 +198,11 @@ a {
 
 /* Footer Styles */
 
+.page-link {
+    background-color: #5e3c58 !important;
+    color: antiquewhite !important;
+}
+
 .text-muted {
     color: #5e3c58 !important;
 }
