@@ -1,7 +1,8 @@
 document.addEventListener('DOMContentLoaded', (event) => {
-    var elem = document.querySelector('.masonry');
-    new Masonry(elem, {
+  let elem = document.querySelector('.masonry');
+  let msnry = new Masonry(elem, {
       itemSelector: '.col',
       columnWidth: '.col',
-    });
   });
+  return msnry;
+});

@@ -1,3 +1,4 @@
+/* Styles for loading animations */
 .loading-item1,
 .loading-item2,
 .loading-item3,
@@ -26,6 +27,8 @@
     opacity: 0;
     transition: opacity 0.5s ease-in-out;
 }
+
+/* Main Project Styles */
 
 body {
     font-family: 'Crimson Text', serif;
@@ -70,8 +73,10 @@ a {
     border-color: antiquewhite;
 }
 
+/* Artwork Page Styles */
+
 .welcome {
-    background-color: rgba(85, 107, 47, 0.5);
+    background-color: antiquewhite;
 }
 
 .row {
@@ -106,18 +111,17 @@ a {
 
 .hover-effect {
     transition: transform .2s;
-    /* Animation */
 }
 
 .hover-effect:hover {
     transform: scale(1.1);
 }
 
+/* Artwork Detail Styles */
+
 .image-container {
     display: flex;
-    /* Makes the container a flex container */
     justify-content: flex-end;
-    /* Aligns the image to the right */
     width: 60%;
 }
 
@@ -181,7 +185,6 @@ a {
 
 .artwork-title {
     background-color: rgba(0, 0, 0, 0.6);
-    /* black with 60% opacity */
     opacity: 0;
     transition: opacity 0.5s ease;
     top: 0;
@@ -222,6 +225,8 @@ a {
 .nav-link {
     color: #5e3c58;
 }
+
+/* Media Query Styles */
 
 @media (max-width: 992px) {
     .auth-text {
