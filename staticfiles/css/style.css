@@ -1,3 +1,263 @@
-h1 {
-    color: blueviolet;
+/* Styles for loading animations */
+.loading-item1,
+.loading-item2,
+.loading-item3,
+.loading-item4 {
+    opacity: 0;
+    transition: opacity 1.2s ease-in-out;
+}
+
+.loading-item1 {
+    transition-delay: 0.1s;
+}
+
+.loading-item2 {
+    transition-delay: 0.3s;
+}
+
+.loading-item3 {
+    transition-delay: 0.5s;
+}
+
+.loading-item4 {
+    transition-delay: 7s;
+}
+
+.loading-cards {
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+/* Main Project Styles */
+
+body {
+    font-family: 'Crimson Text', serif;
+    color: #5e3c58 !important;
+}
+
+main {
+    background-image: url(/static/images/background-texture.jpg);
+}
+
+a {
+    text-decoration: none;
+    color: #5e3c58;
+}
+
+.no-gutters {
+    margin-right: 0;
+    margin-left: 0;
+}
+
+.no-gutters>.col,
+.no-gutters>[class*="col-"] {
+    padding-right: 0;
+    padding-left: 0;
+}
+
+
+.navbar-brand {
+    font-weight: bold;
+    font-size: x-large;
+    color: #5e3c58 !important;
+    padding: 8px;
+}
+
+.navbar-text {
+    padding: 8px;
+}
+
+.navbar-light .navbar-toggler {
+    margin-right: 3px;
+    color: #5e3c58;
+    border-color: antiquewhite;
+}
+
+/* Artwork Page Styles */
+
+.welcome {
+    background-color: antiquewhite;
+}
+
+.row {
+    margin: 0;
+}
+
+.filter-row {
+    padding-left: 45px;
+    padding-top: 10px;
+}
+
+.py-5 {
+    padding-top: 0 !important;
+}
+
+.card-title {
+    font-family: "Roboto", sans-serif;
+    font-weight: 900;
+    font-style: normal;
+    font-size: larger;
+}
+
+.location-artist {
+    font-family: "Roboto", sans-serif;
+    font-style: italic;
+}
+
+.py-5 {
+    padding-top: 1rem;
+    padding-bottom: 2rem;
+}
+
+.hover-effect {
+    transition: transform .2s;
+}
+
+.hover-effect:hover {
+    transform: scale(1.1);
+}
+
+/* Artwork Detail Styles */
+
+.art-image {
+    max-height: 800px;
+    object-fit: contain;
+}
+
+.info-card {
+    margin-top: 4px;
+    border-radius: 20px;
+}
+
+.login-message {
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.reviews {
+    border-color: #5e3c58;
+    border-width: 4px;
+}
+
+.review {
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Artist page Styles */
+
+.card-img-container {
+    height: 200px;
+    overflow: hidden;
+}
+
+.card-img-top {
+    height: 100%;
+    object-fit: cover;
+}
+
+.art-filter {
+    margin-top: 10px;
+}
+
+.form-group {
+    margin-bottom: 5px;
+}
+
+.letter-button,
+.mx-2 {
+    color: #5e3c58 !important;
+    background-color: transparent !important;
+    border: none !important;
+    font-weight: 700;
+    font-size: x-large;
+}
+
+.letter-container {
+    margin-top: 10px;
+}
+
+.reset-button {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-radius: 50%;
+}
+
+.artwork {
+    position: relative;
+    cursor: pointer;
+}
+
+.artwork-title {
+    background-color: rgba(0, 0, 0, 0.6);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+.artwork:hover .artwork-title {
+    opacity: 1;
+}
+
+/* Footer Styles */
+
+footer {
+    max-height: 50px;
+    margin-top: auto;
+}
+
+.page-link {
+    background-color: #5e3c58 !important;
+    color: antiquewhite !important;
+}
+
+.text-muted {
+    color: #5e3c58 !important;
+}
+
+.btn-primary,
+.btn-delete-artwork,
+.btn-edit {
+    color: antiquewhite;
+    background-color: #5e3c58;
+    border-color: #5e3c58;
+}
+
+.btn-primary:hover {
+    color: antiquewhite;
+    background-color: #5e3c58;
+    border-color: #5e3c58;
+}
+
+.btn-primary.active {
+    color: antiquewhite;
+    background-color: #5e3c58;
+    border-color: #5e3c58;
+}
+
+.nav-link {
+    color: #5e3c58;
+}
+
+/* Media Query Styles */
+
+@media (max-width: 992px) {
+    .auth-text {
+        position: absolute;
+        right: 15px;
+        bottom: 10px;
+    }
+
+    .nav-item {
+        padding-left: 3px;
+    }
+
+    .image-container {
+        width: 80%;
+    }
+
+    .about-column {
+        width: 100% !important;
+    }
 }

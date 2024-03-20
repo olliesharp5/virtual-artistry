@@ -1,12 +1,20 @@
+// Attaching an event listener to the element with id 'copyButton'. 
+// This will trigger when the button is clicked
 document.getElementById("copyButton").addEventListener("click", function() {
-    var textarea = document.createElement('textarea')
-    textarea.id = 'temp_element'
-    textarea.style.height = 0
-    document.body.appendChild(textarea)
-    textarea.value = document.getElementById('emailToCopy').innerText
-    var selector = document.querySelector('#temp_element')
-    selector.select()
-    document.execCommand('copy')
-    document.body.removeChild(document.getElementById('temp_element'))
-    alert("Email copied to clipboard!")
-})
+    
+    // Get the email text from the element with id 'emailToCopy'
+    let email = document.getElementById('emailToCopy').innerText;
+  
+    // Use the Clipboard API's writeText method to copy the text
+    navigator.clipboard.writeText(email).then(function() {
+      
+        // Success! Email is on clipboard, now notify the user
+        alert("Email copied to clipboard!");
+      
+    }).catch(function() {
+      
+        // Something went wrong, handle the error
+        alert("Failed to copy email :(");
+      
+    });
+});
