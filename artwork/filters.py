@@ -5,7 +5,7 @@ from artists.models import UserProfile
 class DisplayNameChoiceFilter(django_filters.ChoiceFilter):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.extra['choices'] = [(userprofile.display_name, userprofile.display_name) for userprofile in UserProfile.objects.all()]
+        self.extra['choices'] = [(userprofile.display_name, userprofile.display_name) for userprofile in UserProfile.objects.filter(role='AR')]
 
     def filter(self, qs, value):
         if value:
