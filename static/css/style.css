@@ -119,15 +119,19 @@ a {
 
 /* Artwork Detail Styles */
 
-.image-container {
-    display: flex;
-    justify-content: flex-end;
-    width: 60%;
-}
-
 .art-image {
     max-height: 800px;
     object-fit: contain;
+}
+
+.info-card {
+    margin-top: 4px;
+    border-radius: 20px;
+}
+
+.login-message {
+    font-weight: bold;
+    text-decoration: underline;
 }
 
 .reviews {
@@ -246,5 +250,9 @@ a {
 
     .image-container {
         width: 80%;
+    }
+
+    .about-column {
+        width: 100% !important;
     }
 }
