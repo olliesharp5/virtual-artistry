@@ -76,6 +76,57 @@
         </div>
     </div>
 
+    <!-- Contact Modal to be displayed -->
+    <div class="modal fade" id="contactModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <!-- Contact Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">Contact {{ art.artist.display_name }}</h4>
+                    <button type="button" class="close" data-bs-dismiss="modal">&times;</button>
+                </div>
+
+                <!-- Contact Modal body -->
+                <div class="modal-body">
+                    <h5>Email: <span id="emailToCopy">{{ art.artist.user.email }}</span> <button id="copyButton"
+                            class="btn btn-secondary"><i class="fa-regular fa-copy"></i></button></h5>
+                    <!-- Contact Modal footer -->
+                    <div class="modal-footer">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Review Modal to be displayed -->
+    <div class="modal fade" id="reviewModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <!-- Review Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">Review Artwork</h4>
+                    <button type="button" class="close" data-bs-dismiss="modal">&times;</button>
+                </div>
+
+                <!-- Review Modal body -->
+                <div class="modal-body">
+                    <form class="reviewform" method="post">
+                        {% csrf_token %}
+                        {{ review_form|crispy }}
+                        <!-- Review Modal footer -->
+                        <div class="modal-footer">
+                            <button id="submitButton" type="submit" class="btn btn-primary">Submit
+                                Review</button>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="row mt-3">
         <div class="col-12 card mb-4 reviews">
             <h3>Reviews:</h3>
