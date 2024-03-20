@@ -1,12 +1,8 @@
-SuperUser
+SuperUser (for Admin Panel Access and Artist Profile Access)
 Username: olliesharp5
-Password: SuPeRuSeR
-email address: olliesharp5@gmail.com
+Password: Abigail22
 
-Additional Users:
-Username: user1
-Password: anormaluser
+Additional Users (Regular User Access):
+Username: user2
+Password: normaluser
 
-
-test.artist@test.com
-test
