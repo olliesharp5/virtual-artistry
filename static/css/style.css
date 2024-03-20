@@ -202,6 +202,11 @@ a {
 
 /* Footer Styles */
 
+footer {
+    max-height: 50px;
+    margin-top: auto;
+}
+
 .page-link {
     background-color: #5e3c58 !important;
     color: antiquewhite !important;
