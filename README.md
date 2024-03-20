@@ -252,53 +252,53 @@ The website is designed using following technologies: HTML, CSS, Bootstrap, Java
 * Base Header and Footer
 The base header contains a responsive navigation bar including the title of the site, Artwork, Artists and Help links.  If the user is logged in as an artist, an additional option to create an advert will display. Logged in users, will see their Profile, Logout options as well as a welcoming message. If a user isn't logged in, the Register and Log in options will be displayed in place of the Logout button and welcome message. The base footer contains the standard copyright information.
   
-![SCREENSHOT](INSERT FILEPATH)
-
+![Header](/assets/readme-assets/screenshot_header.png)
+![Footer](/assets/readme-assets/screenshot_footer.png)
 
 * Artwork
 This page showcases all the published artwork in a paginated card format including an image, title, and artist name. There is a filter option to sort the artwork by artist, price, and condition. If user is not logged in, a banner will display advising them to register or login to unlock all the features of the site. 
   
-![SCREENSHOT](INSERT FILEPATH)
+![Artwork](/assets/readme-assets/screenshot_artwork.png)
 
 * Artwork Advert 
 Clicking on an artwork card brings up a detailed view with information like larger image, title, artist name, location, price, year, and artwork's condition. It also includes sections for About, Like counter, and reviews. If the logged in user is the owner of the artwork, they get options to edit or delete the artwork. Other logged in users will see options to contact seller, like, and review the artwork. Contacting seller will copy their email to clipboard. Likes on the artwork and reviews can be registered by the users. If the user is not logged in, only the artwork information and reviews will display. 
   
-![SCREENSHOT](INSERT FILEPATH)
+![Artwork_advert](/assets/readme-assets/screenshot_art_detail.png)
 
 * Artists 
 This page displays a paginated card arrangement of all registered artists on the site. Cards contain profile image, name, and location of the artists.
   
-![SCREENSHOT](INSERT FILEPATH)
+![Artists](/assets/readme-assets/screenshot_artists.png)
 
 * Artist Profile
 Clicking an artist card will redirect user to their profile. It includes artist's details and a display of their published artwork.
   
-![SCREENSHOT](INSERT FILEPATH)
+![Artists_detail](/assets/readme-assets/screenshot_artist_profile.png)
 
 * Help 
 This page contains a form for users to submit customer service requests, which are saved into the database for subsequent actions. 
   
-![SCREENSHOT](INSERT FILEPATH)
+![Help](/assets/readme-assets/screenshot_help.png)
 
 * Profile
 This page displays logged in user's profile with information like assigned role, profile image, display name, location, and about section. There are options to edit profile, manage password, and delete profile. Artists will see additionally their pending artwork adverts for admin approval.  
   
-![SCREENSHOT](INSERT FILEPATH)
+![Profile](/assets/readme-assets/screenshot_profile.png)
 
 * Register 
 Users can register selecting either a regular user, artist or admin role. Following these, they need to fill up user profile details including a display name, location, profile photo and about information. After successful registration, they will be redirected to the home page. If any required field is empty or incorrect, an error message will display.
   
-![SCREENSHOT](INSERT FILEPATH)
+![Register](/assets/readme-assets/screenshot_register.png)
 
 * Login 
 Selecting the login button redirects users to a login page where they can enter their username and password. After successful login, they are redirected to the home page. 
   
-![SCREENSHOT](INSERT FILEPATH)
+![Login](/assets/readme-assets/screenshot_login.png)
 
 * Logout 
 In order to log out, users need to confirm their action on a prompt. After successful logout, they are redirected back to the main page.
   
-![SCREENSHOT](INSERT FILEPATH)
+![Logout](/assets/readme-assets/screenshot_logout.png)
 
 ### Features Left to Implement
 
@@ -314,6 +314,10 @@ In the future I would like to add,
 * I tested the site, and it works in different web browsers: Chrome, Firefox, and Microsoft Edge.
 * On mobile devices, I tested the my site on a Samsung Galaxy S21 Ultra with the Samsung browser and an iPhone 13 with the Safari browser.
 * I confirmed that the site is responsive and functions on different screen sizes using the devtools device toolbar.
+
+### Django Testing 
+
+* I tested multiple views in my project which can be found in the tests.py files of my Django project. 
 
 ### Manual Testing
 
