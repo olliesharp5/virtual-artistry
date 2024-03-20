@@ -12,15 +12,19 @@
             <div class="card">
                 <div class="card-body">
                     <h2 class="card-title">Advertise your art with us!</h2>
-                    <p class="card-text">Here at Virtual Artistry we're always looking for new collaborations with artists to grow our community</p>
-                    <p class="card-text">Complete the form below to create an advert with us and generate visibilty around your work</p>
+                    <p class="card-text">Here at Virtual Artistry we're always looking for new collaborations with
+                        artists to grow our community</p>
+                    <p class="card-text">Complete the form below to create an advert with us and generate visibilty
+                        around your work</p>
                     <p class="card-text">Please contact our customer service if you have any questions</p>
                     <form method="post" enctype="multipart/form-data">
                         {% csrf_token %}
-                        {{ form.as_p }}       
+                        {{ form.as_p }}
                         <button class="btn btn-secondary" type="submit">Submit</button>
                         <button class="btn btn-secondary" type="reset">Clear</button>
                     </form>
+                    <p>Your artwork will undergo a publication review by our admin team after submission, in the
+                        meantime you can view, edit and delete your pending artworks in your profile page!</p>
                 </div>
             </div>
         </div>
