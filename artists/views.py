@@ -2,8 +2,8 @@ from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.models import User
 from django.views import generic
 from django_filters.views import FilterView
-from .models import UserProfile
 from artwork.models import Art
+from .models import UserProfile
 from .filters import UserProfileFilter
 
 # Create your views here.

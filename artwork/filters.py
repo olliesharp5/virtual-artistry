@@ -1,6 +1,6 @@
 import django_filters
-from .models import Art
 from artists.models import UserProfile
+from .models import Art
 
 class DisplayNameChoiceFilter(django_filters.ChoiceFilter):
     def __init__(self, *args, **kwargs):

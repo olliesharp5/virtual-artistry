@@ -1,7 +1,7 @@
 from django import forms
 from django.utils.text import slugify
-from .models import Review, Art
 from artists.models import UserProfile
+from .models import Review, Art
 
 # form for creating art adverts 
 class ArtForm(forms.ModelForm):

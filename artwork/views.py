@@ -4,8 +4,8 @@ from django.contrib.auth.decorators import login_required
 from django.views import generic
 from django.contrib import messages
 from django.http import HttpResponseRedirect
-from .models import Art, Review, Like
 from artists.models import UserProfile
+from .models import Art, Review, Like
 from .forms import ReviewForm, ArtForm
 from .filters import ArtFilter
 

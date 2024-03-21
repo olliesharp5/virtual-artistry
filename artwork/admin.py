@@ -1,6 +1,6 @@
 from django.contrib import admin
-from .models import Art, Review, Like
 from django_summernote.admin import SummernoteModelAdmin
+from .models import Art, Review, Like
 
 @admin.register(Art)
 class ArtworkAdmin(SummernoteModelAdmin):
