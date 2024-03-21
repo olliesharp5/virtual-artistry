@@ -135,10 +135,13 @@ The website is designed with the principles of both clarity and simplicity.
 
 The website employs a hierarchical tree structure where the home page serves as the root. The different sections of the site can be accessed from the top-level navigation in the header. The flows from top to bottom are intuitive and provide a seamless user experience.
 
-**Wireframe**
-The wireframe is designed using Balsamiq software.
+### Wireframes 
 
-![wireframe](INSERT FILEPATH)
+The wireframes were designed using Balsamiq software.
+
+<img src="assets/readme-assets/wireframe_artwork.png" width="600" height="800"> <img src="assets/readme-assets/wireframe_art_detail.png" width="600" height="800"> <img src="assets/readme-assets/wireframe_artists.png" width="600" height="800">
+<img src="assets/readme-assets/wireframe_artist_profile.png" width="600" height="800"> <img src="assets/readme-assets/wireframe_help.png" width="600" height="800">
+
 
 ### Planning
 
@@ -148,7 +151,7 @@ I broke down the project into manageable tasks and plotted them on the Kanban bo
 
 The use of the Kanban board provided a clear, real-time overview of the project's progress. It facilitated regular reviews, quick adjustments and maintained the fluidity of the development process. This thoughtful planning and organization guided the project towards its successful completion.
 
-![kanban](https://github.com/users/olliesharp5/projects/3/views/1)
+[Kanban](https://github.com/users/olliesharp5/projects/3/views/1)
 
 
 ### Surface
@@ -400,12 +403,11 @@ The performance of the website was tested with [Google Lighthouse](INSERT LINK T
 
 **Lighthouse reports:**<br>
 
-
 ## Credits
 
 ### Content
 * The idea for the offcanvas backdrop to house the filter properties was taken from https://getbootstrap.com/docs/5.0/components/offcanvas/
-* implementation of masonry layout: https://masonry.desandro.com/
+* Implementation of masonry layout: https://masonry.desandro.com/
 
 ### Media
 
