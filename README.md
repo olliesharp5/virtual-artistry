@@ -38,9 +38,9 @@
 
 ## Demo
 
-![Website look on different devices](INSERT FILEPATH)
+![Website look on different devices](/assets/readme-assets/responsive_design.png)
 
-### A live demo to the website can be found [here](INSERT LINK TO LIVE SITE)
+### A live demo to the website can be found [here](https://virtual-artistry-d471b72b3af1.herokuapp.com/)
 
 ## UX
 This website is primarily targeting art enthusiasts, collectors, and artists. The prime intention is to create an online platform where artists can showcase their work and art lovers can discover, appreciate, and purchase outstanding pieces of art. 
