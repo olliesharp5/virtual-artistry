@@ -74,7 +74,7 @@
                     {% if not art.art_image or "placeholder" in art.art_image.url %}
                     <img class="card-img-top" src="{% static 'images/placeholder_image.png' %}" alt="artwork image">
                     {% else %}
-                    <img class="card-img-top" src=" {{ art.art_image.url }}" alt="{{ art.title }}">
+                    <img class="card-img-top" src="{{ art.resized_image_url }}" alt="{{ art.title }}">
                     {% endif %}
                     <div class="card-body">
                       <p class="card-text card-title">{{art.title}}</p>

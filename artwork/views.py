@@ -1,3 +1,4 @@
+import cloudinary
 from django.shortcuts import render, get_object_or_404, reverse, redirect
 from django.contrib.auth.decorators import login_required
 from django.views import generic
@@ -39,11 +40,17 @@ class ArtList(generic.ListView):
         queryset = super().get_queryset()
         queryset = queryset.exclude(status=0)
         self.filter = ArtFilter(self.request.GET, queryset=queryset)
-        return self.filter.qs.order_by('?')
+        return self.filter.qs.order_by('title')
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['filter'] = self.filter
+
+         # Generate the URLs for the resized images
+        for art in context['object_list']:
+            if art.art_image:
+                art.resized_image_url = cloudinary.utils.cloudinary_url(art.art_image.public_id, width=500, crop="scale")[0]
+
         return context
 
 

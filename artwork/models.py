@@ -48,6 +48,7 @@ class Art(models.Model):
     class Meta:
         ordering = ["-created_on"]
 
+
     def __str__(self):
         return f"The title of artwork post is {self.title}"
 

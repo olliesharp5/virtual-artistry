@@ -380,6 +380,7 @@ No errors were found when passing through the contrast validator.
 #### Unfixed Bugs
 
 * The masonry style is an experimental feature of Bootstrap5. It has been used in the artwork page to display the cards in a way that compliments both portrait and landscape artwork. This style can somethimes struggle to arrange the tiles correctly, hwoever with a refresh of the page it will resolve. 
+* There is a current issue with the size of image being sent to the site by Cliudinary. This is contributing slightly to a longer loading time for the site. In the future I will limit the size of the image being sent through whilst maintaining the aspect ratio. 
 
 ## Deployment
 
@@ -402,6 +403,35 @@ The following git commands were used throughout development to push code to the 
 The performance of the website was tested with [Google Lighthouse](INSERT LINK TO REPORT)
 
 **Lighthouse reports:**<br>
+
+Issues have been highlighted with performance in my Lighthouse reports. These issues have been identified as being related to the Masonry Bootstrap5 style used on the artwork page. Additionally there is some formatting issues in the way Cloudinary brings over images to the site which contributes to loading times. 
+
+These are bugs I hope to resolve in the near future by amending the Masonry Javascript and limiting the image size in Cloudinary. 
+
+* Artwork Page
+
+![lighthouse_artwork](/assets/readme-assets/lighthouse_artwork.png)
+
+* Art Advert Page 
+
+![lighthouse_art_detail](/assets/readme-assets/lighthouse_art_detail.png)
+
+* Artists Page 
+
+![lighthouse_artists](/assets/readme-assets/lighthouse_artists.png)
+
+* Artists Profile Page
+
+![lighthouse_artist_profile](/assets/readme-assets/lighthouse_artist_profile.png)
+
+* Login/Logout/Register Pages
+
+![lighthouse_login_logout_register](/assets/readme-assets/lighthouse_register_login_logout.png)
+
+* Profile Page
+
+![lighthouse_profile](/assets/readme-assets/lighthouse_profile.png)
+
 
 ## Credits
 
