@@ -93,9 +93,10 @@ def art_details(request, art_slug):
         review.author = request.user.userprofile  # Set the author to the current user.profile
         review.save()
     reviews = Review.objects.filter(art=art, approved=True)  # Fetch approved reviews
+    user_has_reviewed = art.reviews.filter(author=request.user.userprofile).exists() if request.user.is_authenticated else False
+
     return render(request, 'artwork/art_detail.html', 
-        {'art': art, 'user_has_liked': user_has_liked, 'review_form': form, 'reviews': reviews, 'artist_profile': artist_profile,}
-    )
+        {'art': art, 'user_has_liked': user_has_liked, 'review_form': form, 'reviews': reviews, 'artist_profile': artist_profile, 'user_has_reviewed': user_has_reviewed})
 
 
 def create_advert(request):
@@ -178,15 +179,19 @@ def review(request):
 
     :template:`art_detail.html`
     """
+    artwork = get_object_or_404(Artwork, slug=art_slug)
     if request.method == 'POST':
         form = ReviewForm(request.POST)
         if form.is_valid():
             form.save()
-            messages.success(request, 'Your review has been sent for admin approval')
+            messages.add_message(request, messages.SUCCESS, 'Your review has been sent for admin approval')
             return redirect('art_details', art_slug=artwork.slug)
+        else:
+            messages.add_message(request, messages.ERROR, 'There was an error submitting your review.')
     else:
         form = ReviewForm()
-    return render(request, 'artwork/art_detail.html', {'form': form})
+    
+    return render(request, 'artwork/art_detail.html', {'form': form, 'artwork': artwork})
 
 
 def review_edit(request, art_slug, review_id):
