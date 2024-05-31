@@ -78,20 +78,27 @@ def art_details(request, art_slug):
     List of approved Review objects linked to the Art object.
     ``artist_profile``
     The profile of the artist who created the Art.
+    ``user_has_reviewed``
+    Boolean flag indicating if the current user has already reviewed the art.
+
+    **POST:**
+
+    Handles the creation of a new Review for the Art object.
+    If the form is valid, a new Review instance is created and saved,
+    and the user is redirected to the Art details with a success message.
+    If the form is invalid, an error message is displayed.
 
     **Template:**
 
     :template:`art_detail.html`
     """
-    print("art_details view called")
     art = get_object_or_404(Art, slug=art_slug)
     user_has_liked = Like.objects.filter(user=request.user.userprofile, art=art).exists() if request.user.is_authenticated else False
     artist_profile = art.artist
     form = ReviewForm(request.POST or None)
+    
     if request.method == "POST":
-        print("POST request detected")
         if form.is_valid():
-            print("Form is valid")
             review = form.save(commit=False)
             review.art = art
             review.author = request.user.userprofile
@@ -99,8 +106,6 @@ def art_details(request, art_slug):
             messages.success(request, 'Your review has been submitted and is pending approval.')
             return redirect('art_details', art_slug=art.slug)
         else:
-            print("Form is not valid")
-            print(form.errors)  # Print form errors to debug why the form is not valid
             messages.error(request, 'There was an error submitting your review. Please check the form and try again.')
     
     reviews = Review.objects.filter(art=art, approved=True)
@@ -115,7 +120,6 @@ def art_details(request, art_slug):
         'user_has_reviewed': user_has_reviewed
     }
     
-    print("Rendering the template with context:", context)
     return render(request, 'artwork/art_detail.html', context)
 
 
