@@ -109,4 +109,4 @@ class Review(models.Model):
         ordering = ["created_on"]
 
     def __str__(self):
-        return f"Review {self.body} by {self.author}"
+        return f"Review for {self.art.title} by {self.author}"
