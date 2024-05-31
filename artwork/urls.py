@@ -2,7 +2,6 @@ from django.urls import path
 from . import views
 from .views import like_artwork
 
-
 urlpatterns = [
     path('', views.ArtList.as_view(), name='home'),
     path('art/<slug:art_slug>/', views.art_details, name='art_details'),

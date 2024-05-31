@@ -11,8 +11,6 @@ class ArtworkAdmin(SummernoteModelAdmin):
     prepopulated_fields = {'slug': ('title',)}
     summernote_fields = ('about',)
 
-# Register your models here.
-
 admin.site.register(Review)
 
 admin.site.register(Like)

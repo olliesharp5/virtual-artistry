@@ -28,7 +28,7 @@ class ArtForm(forms.ModelForm):
 
 
 class ReviewForm(forms.ModelForm):
-    RATING_CHOICES = [(i, str(i)) for i in range(6)]  # Choices from 0 to 5
+    RATING_CHOICES = [(i, str(i)) for i in range(1, 6)]  # Choices from 1 to 5
 
     rating = forms.ChoiceField(choices=RATING_CHOICES, widget=forms.Select)
 

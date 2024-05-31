@@ -83,20 +83,40 @@ def art_details(request, art_slug):
 
     :template:`art_detail.html`
     """
+    print("art_details view called")
     art = get_object_or_404(Art, slug=art_slug)
     user_has_liked = Like.objects.filter(user=request.user.userprofile, art=art).exists() if request.user.is_authenticated else False
     artist_profile = art.artist
     form = ReviewForm(request.POST or None)
-    if form.is_valid():
-        review = form.save(commit=False)
-        review.art = art
-        review.author = request.user.userprofile  # Set the author to the current user.profile
-        review.save()
-    reviews = Review.objects.filter(art=art, approved=True)  # Fetch approved reviews
+    if request.method == "POST":
+        print("POST request detected")
+        if form.is_valid():
+            print("Form is valid")
+            review = form.save(commit=False)
+            review.art = art
+            review.author = request.user.userprofile
+            review.save()
+            messages.success(request, 'Your review has been submitted and is pending approval.')
+            return redirect('art_details', art_slug=art.slug)
+        else:
+            print("Form is not valid")
+            print(form.errors)  # Print form errors to debug why the form is not valid
+            messages.error(request, 'There was an error submitting your review. Please check the form and try again.')
+    
+    reviews = Review.objects.filter(art=art, approved=True)
     user_has_reviewed = art.reviews.filter(author=request.user.userprofile).exists() if request.user.is_authenticated else False
 
-    return render(request, 'artwork/art_detail.html', 
-        {'art': art, 'user_has_liked': user_has_liked, 'review_form': form, 'reviews': reviews, 'artist_profile': artist_profile, 'user_has_reviewed': user_has_reviewed})
+    context = {
+        'art': art,
+        'user_has_liked': user_has_liked,
+        'review_form': form,
+        'reviews': reviews,
+        'artist_profile': artist_profile,
+        'user_has_reviewed': user_has_reviewed
+    }
+    
+    print("Rendering the template with context:", context)
+    return render(request, 'artwork/art_detail.html', context)
 
 
 def create_advert(request):
@@ -156,44 +176,6 @@ def like_artwork(request, art_slug):
         Like.objects.create(user=request.user.userprofile, art=artwork)
     return redirect('art_details', art_slug=artwork.slug)
 
-
-def review(request):
-    """
-    Handles the creation of a new Review for an Art object from the :model:`art.Review`.
-
-    **Arguments:**
-
-    ``request``
-    The HTTP request.
-
-    **POST:**
-
-    Review information is validated and if valid, a new Review instance is created and saved. 
-    The user is redirected to the Art details.
-
-    **GET:**
-
-    An empty ReviewForm is displayed.
-
-    **Template:**
-
-    :template:`art_detail.html`
-    """
-    artwork = get_object_or_404(Artwork, slug=art_slug)
-    if request.method == 'POST':
-        form = ReviewForm(request.POST)
-        if form.is_valid():
-            form.save()
-            messages.add_message(request, messages.SUCCESS, 'Your review has been sent for admin approval')
-            return redirect('art_details', art_slug=artwork.slug)
-        else:
-            messages.add_message(request, messages.ERROR, 'There was an error submitting your review.')
-    else:
-        form = ReviewForm()
-    
-    return render(request, 'artwork/art_detail.html', {'form': form, 'artwork': artwork})
-
-
 def review_edit(request, art_slug, review_id):
     """
     Handles the editing of an existing review associated with an Art object from the :model:`art.Review`.
@@ -221,7 +203,7 @@ def review_edit(request, art_slug, review_id):
             review.product = product
             review.approved = False
             review.save()
-            messages.add_message(request, messages.SUCCESS, 'Review Updated!')
+            messages.add_message(request, messages.SUCCESS, 'Review Updated! Sent to admin for approval.')
         else:
             messages.add_message(request, messages.ERROR, 'Error updating review!')
     

@@ -119,7 +119,7 @@
 
                 <!-- Review Modal body -->
                 <div class="modal-body">
-                    <form class="reviewform" method="post">
+                    <form class="reviewform" method="post" action="{% url 'art_details' art.slug %}">
                         {% csrf_token %}
                         {{ review_form|crispy }}
                         <!-- Review Modal footer -->

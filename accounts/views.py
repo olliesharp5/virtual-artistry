@@ -43,6 +43,7 @@ def register(request):
             profile.user = user
             profile.save()
             login(request, user)  # Log in the user
+            messages.add_message(request, messages.SUCCESS, 'Congratulations, you have successfully registered!')
             return redirect('home')
     else:
         user_form = UserForm()
@@ -106,6 +107,7 @@ def update_profile(request):
         if user_form.is_valid() and profile_form.is_valid():
             user_form.save()
             profile_form.save()
+            messages.add_message(request, messages.SUCCESS, 'Profile updated!')
             return redirect('profile')
     else:
         user_form = UpdateUserForm(instance=request.user)
