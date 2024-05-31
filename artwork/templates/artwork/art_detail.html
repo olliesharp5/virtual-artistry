@@ -12,7 +12,7 @@
     </div>
 
     <div class="row loading-item2 advert-container">
-        <div class="col-lg-9 col-md-8 col-sm-12 image-container">
+        <div class="col-lg-7 col-md-8 col-sm-12 image-container">
             {% if not art.art_image or "placeholder" in art.art_image.url %}
             <img class="img-fluid art-image" src="{% static 'images/placeholder_image.png' %}" alt="{{ art.title }}">
             {% else %}
@@ -22,7 +22,7 @@
                 <p>{{ art.like_set.count }} likes</p>
             </div>
         </div>
-        <div class="col-lg-3 col-sm-12 loading-item3 about-column">
+        <div class="col-lg-5 col-sm-12 loading-item3 about-column">
             <h1 id="artwork-title">{{ art.title }}</h1>
             <div class="card info-card mb-3">
                 <div class="card-body">
