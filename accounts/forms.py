@@ -25,4 +25,8 @@ class UserProfileForm(forms.ModelForm):
 
 class UpdateProfileForm(UserProfileForm):
     class Meta(UserProfileForm.Meta):
-        fields = ['display_name', 'location', 'profile_image', 'about']
+        fields = ['role', 'display_name', 'location', 'profile_image', 'about']
+
+    def __init__(self, *args, **kwargs):
+        super(UpdateProfileForm, self).__init__(*args, **kwargs)
+        self.fields['role'].widget = forms.HiddenInput()
